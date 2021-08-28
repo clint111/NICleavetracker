@@ -1,0 +1,384 @@
+
+
+
+<div class="row">
+	<div class="col-xs-12 col-sm-9">
+
+
+        <h1 ng-if="undefined === rightrule._id"><i class="fa fa-edit text-muted"></i> <span translate>Create a right rule</span></h1>
+        <h1 ng-if="undefined !== rightrule._id"><i class="fa fa-edit text-muted"></i> <span translate>Modify a right rule</span></h1>
+
+
+        <form role="form" class="top30">
+            <div class="form-group">
+                <label for="rightrule_title" translate>Rule title, this will be visible from users</label>
+                <input type="text" id="rightrule_title" class="form-control" ng-model="rightrule.title" ng-required />
+            </div>
+
+            <div ng-if="step===1">
+
+                <h3 translate>Select rule type</h3>
+
+                <div class="form-group">
+                    <label>
+                        <input type="radio" ng-model="rightrule.type" value="entry_date" />
+                        <strong translate>Activate the right according to the entry creation date</strong>
+                    </label>
+                    <p translate>Right is visible when the request creation date is in the renewal period</p>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="radio" ng-model="rightrule.type" value="request_period" />
+                        <strong translate>Activate the right according to the request period</strong>
+                    </label>
+                    <p translate>Right is visible when request period is in the renewal period</p>
+                </div>
+
+				<div class="form-group">
+                    <label>
+                        <input type="radio" ng-model="rightrule.type" value="request_beneficiary" />
+                        <strong translate>Activate the out of collection right according to the request period</strong>
+                    </label>
+                    <p translate>Right is visible when request period is in period set on the user/right link</p>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="radio" ng-model="rightrule.type" value="seniority" />
+                        <strong translate>Activate the right according to the seniority</strong>
+                    </label>
+                    <p translate>Right is visible when the request period is in a period relative to the user seniority date</p>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="radio" ng-model="rightrule.type" value="age" />
+                        <strong translate>Activate the right according to the age</strong>
+                    </label>
+                    <p translate>Right is visible when the request period is in a period relative to the user birth date</p>
+                </div>
+
+				<div class="form-group">
+                    <label>
+                        <input type="radio" ng-model="rightrule.type" value="consumption" />
+                        <strong translate>Activate the right according to consumed quantity</strong>
+                    </label>
+                    <p translate>Right is visible when the user has consumed a quantity defined for a right type on a period</p>
+                </div>
+
+                <div class="top30">
+                    <button class="btn btn-primary" ng-click="next()"><i class="fa fa-arrow-circle-right"></i> <translate>Next</translate></button>
+                    <button class="btn btn-link" ng-click="back()" translate>Cancel</button>
+                </div>
+            </div>
+
+            <div ng-if="step===2">
+
+                <div ng-switch on="rightrule.type">
+                    <div ng-switch-when="entry_date">
+                        <strong translate>Rule type:</strong>
+                        <p translate>Activate the right according to the entry creation date</p>
+                        <p translate>If this rule is not verified, the right will not be visible by the user in the rights list and when allocating</p>
+
+                        <div class="form-group">
+                            <label for="entry_unit" translate>Quantity unit to use in interval modification:</label>
+                            <select id="entry_unit" class="form-control" ng-model="rightrule.interval.unit">
+                                <option value="D" translate>Days</option>
+                                <option value="Y" translate>Years</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="entry_min" translate>Additional days before the renewal start date:</label>
+                            <div class="input-group">
+                                <input type="number" id="entry_min" class="form-control" ng-model="rightrule.interval.min" ng-required />
+                                <div class="input-group-addon">
+                                    <span ng-if="'D'==rightrule.interval.unit"><span translate>Days</span></span>
+                                    <span ng-if="'Y'==rightrule.interval.unit"><span translate>Years</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="entry_max" translate>Additional days after the renewal end date:</label>
+                            <div class="input-group">
+                                <input type="number" id="entry_max" class="form-control" ng-model="rightrule.interval.max" ng-required />
+                                <div class="input-group-addon">
+                                    <span ng-if="'D'==rightrule.interval.unit"><span translate>Days</span></span>
+                                    <span ng-if="'Y'==rightrule.interval.unit"><span translate>Years</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div ng-switch-when="request_period">
+                        <strong translate>Rule type:</strong>
+                        <p translate>Activate the right according to the request period</p>
+                        <p translate>If this rule is not verified, the right will not be available in the second step of a request, once the request dates are set.</p>
+
+                        <div class="form-group">
+                            <label for="request_period_unit" translate>Quantity unit to use in interval modification:</label>
+                            <select id="request_period_unit" class="form-control" ng-model="rightrule.interval.unit">
+                                <option value="D" translate>Days</option>
+                                <option value="Y" translate>Years</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="request_period_min" translate>Availability duration before the renewal start date:</label>
+                            <div class="input-group">
+                                <input type="number" id="request_period_min" class="form-control" ng-model="rightrule.interval.min" ng-required />
+                                <div class="input-group-addon">
+                                    <span ng-if="'D'==rightrule.interval.unit"><span translate>Days</span></span>
+                                    <span ng-if="'Y'==rightrule.interval.unit"><span translate>Years</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="request_period_max" translate>Availability duration after the renewal end date:</label>
+                            <div class="input-group">
+                                <input type="number" id="request_period_max" class="form-control" ng-model="rightrule.interval.max" ng-required />
+                                <div class="input-group-addon">
+                                    <span ng-if="'D'==rightrule.interval.unit"><span translate>Days</span></span>
+                                    <span ng-if="'Y'==rightrule.interval.unit"><span translate>Years</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+					<div ng-switch-when="request_beneficiary">
+                        <strong translate>Rule type:</strong>
+                        <p translate>Activate the out of collection right according to the request period</p>
+                        <p translate>If this rule is not verified, the right will not be available in the second step of a request, once the request dates are set.</p>
+
+                        <div class="form-group">
+                            <label for="request_beneficiary_unit" translate>Quantity unit to use in interval modification:</label>
+                            <select id="request_beneficiary_unit" class="form-control" ng-model="rightrule.interval.unit">
+                                <option value="D" translate>Days</option>
+                                <option value="Y" translate>Years</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="request_beneficiary_min" translate>Availability duration before the period start date from the user/right link:</label>
+                            <div class="input-group">
+                                <input type="number" id="request_beneficiary_min" class="form-control" ng-model="rightrule.interval.min" ng-required />
+                                <div class="input-group-addon">
+                                    <span ng-if="'D'==rightrule.interval.unit"><span translate>Days</span></span>
+                                    <span ng-if="'Y'==rightrule.interval.unit"><span translate>Years</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="request_beneficiary_max" translate>Availability duration after the period end date from the user/right link:</label>
+                            <div class="input-group">
+                                <input type="number" id="request_beneficiary_max" class="form-control" ng-model="rightrule.interval.max" ng-required />
+                                <div class="input-group-addon">
+                                    <span ng-if="'D'==rightrule.interval.unit"><span translate>Days</span></span>
+                                    <span ng-if="'Y'==rightrule.interval.unit"><span translate>Years</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div ng-switch-when="seniority">
+                        <strong translate>Rule type:</strong>
+                        <p translate>Activate the right according to the user seniority</p>
+                        <p translate>If this rule is not verified, the right will not be visible by the user in the rights list and when allocating:</p>
+
+                        <div class="form-group">
+                            <label for="seniority_min" translate>Years before the entry start date to set the period start:</label>
+                            <div class="input-group">
+                                <input type="number" id="seniority_min" class="form-control" ng-model="rightrule.interval.min" ng-required />
+                                <div class="input-group-addon" translate>Years</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="seniority_max" translate>Number of years before the entry start date to set the period end:</label>
+                            <div class="input-group">
+                                <input type="number" id="seniority_max" class="form-control" ng-model="rightrule.interval.max" ng-required />
+                                <div class="input-group-addon" translate>Years</div>
+                            </div>
+                        </div>
+
+                        <em class="text-info" translate>For an absence with today as start date, if the seniority date of is beetween {{estimated.min|date}} and {{estimated.max|date}}, the right will be available.</em>
+                    </div>
+
+
+
+
+
+                    <div ng-switch-when="age">
+                        <strong translate>Rule type:</strong>
+                        <p translate>Activate the right according to the user age</p>
+                        <p translate>If this rule is not verified, the right will not be visible by the user in the rights list and when allocating:</p>
+
+                        <div class="form-group">
+                            <label for="age_min" translate>Years after the birth date to set the period start:</label>
+                            <div class="input-group">
+                                <input type="number" id="age_min" class="form-control" ng-model="rightrule.interval.min" ng-required />
+                                <div class="input-group-addon" translate>Years</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="age_max" translate>Years after the birth date to set the period end:</label>
+                            <div class="input-group">
+                                <input type="number" id="age_max" class="form-control" ng-model="rightrule.interval.max" ng-required />
+                                <div class="input-group-addon" translate>Years</div>
+                            </div>
+                        </div>
+
+                        <em class="text-info" translate>The right will be available only if the user is beetween {{rightrule.interval.min}} years old and {{rightrule.interval.max}} years old on the first day of the requested leave.</em>
+                    </div>
+
+
+
+					<div ng-switch-when="consumption">
+						<strong translate>Rule type:</strong>
+                        <p translate>Activate the right according to the consumed quantity on a right type</p>
+                        <p translate>If this rule is not verified, the right will not be visible by the user in the rights list and when allocating:</p>
+
+						<div class="row top30">
+							<div class="col-md-8">
+								<div class="form-group">
+							        <label for="right_type" translate>Right type to test</label>
+							        <select class="form-control" id="right_type" ng-model="rightrule.consumption.type" ng-options="type._id as type.name for type in righttypes">
+							            <option></option>
+							        </select>
+							    </div>
+							</div>
+
+							<div class="col-md-4">
+								<div class="form-group">
+							        <label for="interval_unit" translate>Quantity unit</label>
+							        <select class="form-control" id="interval_unit" ng-model="rightrule.interval.unit">
+							            <option value="D" translate>Days</option>
+										<option value="H" translate>Hours</option>
+							        </select>
+							    </div>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+					        <label for="consumption_cap" translate>Ignore consumption beyond</label>
+							<div class="input-group">
+								<input type="number" id="consumption_cap" class="form-control" ng-model="rightrule.consumption.cap" />
+								<div class="input-group-addon" ng-if="rightrule.interval.unit=='D'"><span translate>Days</span></div>
+								<div class="input-group-addon" ng-if="rightrule.interval.unit=='H'"><span translate>Hours</span></div>
+							</div>
+					    </div>
+
+
+
+
+						<div class="row top60">
+							<p class="col-md-9"><strong translate>Define the periods that will be used to measure the consumed quantity</strong></p>
+
+					        <div class="col-md-3 text-right">
+					            <button class="btn btn-primary" ng-click="addPeriod()">
+					                <i class="fa fa-plus-circle"></i> <span translate>Add period</span>
+					            </button>
+					        </div>
+						</div>
+
+						<div class="top15">
+							<div class="row" ng-repeat="period in rightrule.consumption.periods">
+
+								<div class="col-md-2 text-right">
+						            <button type="button" class="btn btn-warning" ng-click="removePeriod($index)"><span class="glyphicon glyphicon-remove"></span><span class="sr-only" translate>Remove</span></button>
+								</div>
+
+								<div class="col-md-5">
+									<div class="form-group">
+										<label class="sr-only" for="testBeginDate{{$index}}">Begin date</label>
+										<div class="input-group">
+								            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+								            <input id="testBeginDate{{$index}}" class="form-control" ng-model="period.dtstart" placeholder="{{'Begin date'|translate}}" bs-datepicker type="text" data-autoclose="1" data-date-format="d MMMM" />
+								        </div>
+									</div>
+								</div>
+
+								<div class="col-md-5">
+									<div class="form-group">
+										<label class="sr-only" for="testEndDate{{$index}}">End date</label>
+										<div class="input-group">
+								            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+								            <input id="testEndDate{{$index}}" class="form-control" ng-model="period.dtend" placeholder="{{'End date'|translate}}" bs-datepicker type="text" data-autoclose="1" data-date-format="d MMMM" />
+								        </div>
+									</div>
+								</div>
+
+
+							</div>
+
+							<div class="row">
+								<div class="col-md-2"></div>
+								<div class="col-md-10 text-muted">
+									<em translate>Years are ignored and computed back to fit in the renewal period, as a consequence, this rule type will work only with yearly or less renewal periods.</em>
+								</div>
+							</div>
+					</div>
+
+						<div ng-if="rightrule.consumption.periods.length>0">
+							<div class="top30">
+								<p><strong translate>Set the consumed quantity interval where the rule will be valid</strong></p>
+							</div>
+							<div class="row">
+								<div class="col-md-2">
+
+								</div>
+
+								<div class="col-md-5">
+									<div class="form-group">
+			                            <label for="consumption_min" translate>Minimal consumed quantity:</label>
+			                            <div class="input-group">
+			                                <input type="number" id="consumption_min" class="form-control" ng-model="rightrule.interval.min" />
+											<div class="input-group-addon" ng-if="rightrule.interval.unit=='D'"><span translate>Days</span></div>
+				                            <div class="input-group-addon" ng-if="rightrule.interval.unit=='H'"><span translate>Hours</span></div>
+			                            </div>
+			                        </div>
+								</div>
+
+								<div class="col-md-5">
+			                        <div class="form-group">
+			                            <label for="consumption_max" translate>Maximal consumed quantity:</label>
+			                            <div class="input-group">
+			                                <input type="number" id="consumption_max" class="form-control" ng-model="rightrule.interval.max" />
+											<div class="input-group-addon" ng-if="rightrule.interval.unit=='D'"><span translate>Days</span></div>
+				                            <div class="input-group-addon" ng-if="rightrule.interval.unit=='H'"><span translate>Hours</span></div>
+			                            </div>
+			                        </div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+                </div>
+
+                <br />
+
+                <button class="btn btn-primary" ng-click="saveRightrule()"><i class="fa fa-save"></i> <span translate>Save</span></button>
+                <button class="btn btn-danger" ng-click="delete()"><i class="fa fa-times"></i> <span translate>Delete</span></button>
+                <button class="btn btn-link" ng-click="back()" translate>Cancel</button>
+
+            </div>
+
+        </form>
+    </div>
+
+
+    <div class="col-xs-12 col-sm-3" ng-include="'partials/utils/common/right/right-panel.html'">
+	</div>
+</div>

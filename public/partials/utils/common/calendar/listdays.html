@@ -1,0 +1,63 @@
+<div class="col-md-12 text-right">
+    <strong class="text-primary">{{titleDate|date:'MMMM yyyy'}} &nbsp;</strong>
+    <span class="text-nowrap">
+        <button class="btn btn-default" ng-click="previousMonth()" title="{{'Previous month' | translate}}"><i class="fa fa-arrow-left"></i></button>
+        <button class="btn btn-default" ng-click="nextMonth()" title="{{'Next month' | translate}}"><i class="fa fa-arrow-right"></i></button>
+    </span>
+</div>
+
+<div class="col-md-12 top10 calendar">
+    <div class="header row">
+        <div class="weeknumber hidden-xs">&nbsp;</div>
+        <div class="day" translate>Monday</div>
+        <div class="day" translate>Tuesday</div>
+        <div class="day" translate>Wednesday</div>
+        <div class="day" translate>Thursday</div>
+        <div class="day" translate>Friday</div>
+        <div class="day" translate>Saturday</div>
+        <div class="day" translate>Sunday</div>
+    </div>
+    <div ng-if="!isLoading" class="week row" ng-repeat="week in cal.calendar.weeks">
+        <div class="weeknumber text-muted hidden-xs" id="{{week.id}}" title="{{ 'Week number' | translate }}">{{week.label}}</div>
+        <div class="day" ng-repeat="day in week.days">
+            <div class="cell" ng-class="{ 'cal-available': !isLoading && day.isScheduled(), 'cal-notscheduled': !isLoading && day.isNotScheduled(), 'cal-nonworking': day.isNonWorkingDay(), 'cal-outmonth': !day.isInMonth() }">
+                <div>
+                    <small>{{day.label}}</small>
+                </div>
+                <div class="text-center" ng-repeat="event in day.events">
+                    <a href=""
+                        ng-attr-title="{{event.summary}}"
+                        data-content-template="partials/utils/common/calendar/popover-event.html"
+                        data-auto-close="1"
+                        bs-popover>
+
+                        <i ng-if="event.status=='CONFIRMED'" class="hidden-xs fa fa-check-circle text-success" ng-attr-title="{{'Confirmed'|translate}}"></i>
+                        <i ng-if="event.status=='TENTATIVE'" class="hidden-xs fa fa-hourglass-half text-warning" ng-attr-title="{{'Waiting approval'|translate}}"></i>
+                        <i ng-if="event.status=='PRECANCEL'" class="hidden-xs fa fa-hourglass-half text-danger" ng-attr-title="{{'Waiting approval for delete'|translate}}"></i>
+
+                        <span class="hidden-sm hidden-xs">
+                            <span ng-if="day.isStart(event)">{{event.dtstart|date:'shortTime'}}</span>
+                            <i class="fa fa-long-arrow-right"></i>
+                            <span ng-if="day.isEnd(event)">{{event.dtend|date:'shortTime'}}</span>
+                        </span>
+
+                        <span class="hidden-md hidden-lg">
+                            <span ng-if="day.isStart(event)">{{event.dtstart|date:'H'}}</span>
+                            /
+                            <span ng-if="day.isEnd(event)">{{event.dtend|date:'H'}}</span>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="text-center" ng-repeat="event in day.nonworkingday">
+                    <small class="summary">{{event.summary}}</small>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <p ng-if="isLoading" class="text-center text-info">
+        <i class="fa fa-spinner fa-pulse"></i> <span translate>Loading...</span>
+    </p>
+</div>

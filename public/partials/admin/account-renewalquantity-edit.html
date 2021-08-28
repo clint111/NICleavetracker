@@ -1,0 +1,105 @@
+<div class="row">
+    <div class="col-sm-3">
+
+        <img class="img-rounded" ng-if="user.imageUrl" ng-src="{{user.imageUrl}}" />
+        <i class="top15 glyphicon glyphicon-user text-muted fa-5x" ng-if="!user.imageUrl"></i>
+
+        <h3><a ng-href="#/admin/users/{{user._id}}">{{user.lastname}} {{user.firstname}}</a></h3>
+
+        <p><a href="mailto:{{user.email}}">{{user.email}}</a></p>
+
+        <p ng-if="user.department.name"><span translate>Department:</span> {{user.department.name}}</p>
+        <p ng-if="user.roles.account.arrival"><span translate>Arrival date:</span> {{user.roles.account.arrival|date}}</p>
+    </div>
+
+
+    <div class="col-xs-12 col-sm-9">
+
+
+        <div class="row panel panel-primary">
+
+            <div class="col-md-1 hidden-xs vcenter">
+                <button ng-if="accountCollections.prev" class="btn btn-primary" ng-click="prev()" title="{{'Previous collection'|translate}}" bs-tooltip>
+                    <i class="fa fa-arrow-left"></i>
+                </button>
+            </div>
+            <div class="col-md-9 col-xs-12 vcenter">
+                <h2>{{accountCollections.current.rightCollection.name}}</h2>
+                <p><span translate>From date:</span> {{accountCollections.current.from|date}}</p>
+                <p ng-if="accountCollections.current.to"><span translate>To:</span> {{accountCollections.current.to|date}}</p>
+            </div>
+            <div class="col-md-2 hidden-xs vcenter text-right">
+                <button ng-if="accountCollections.next" class="btn btn-primary" ng-click="next()" title="{{'Next collection'|translate}}" bs-tooltip>
+                    <i class="fa fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+
+
+        <form role="form" name="accountRenewalQuantityEdit">
+
+
+            <div class="alert alert-danger" role="alert" ng-if="beneficiairesLoaded && !beneficiaries.length">
+                <span translate>There are no configured rights to display</span>
+            </div>
+
+
+            <div ng-repeat="beneficiary in beneficiaries" class="form-inline">
+
+                <div class="row top30">
+                    <h3 class="col-sm-8">
+                        <i class="fa fa-asterisk" style="color:{{beneficiary.right.type.color}}" title="{{beneficiary.right.type.name}}"></i>
+                        {{beneficiary.right.name}}
+                    </h3>
+                    <div class="col-sm-4 text-right top30 text-info" ng-if="beneficiary.right.quantity">
+                        <small title="{{'Initial quantity on renewal creation'|translate}}">{{beneficiary.right.quantity|rightQuantity}} {{beneficiary.initial_quantity_dispUnit}}</small>
+                    </div>
+                </div>
+
+                <div class="gadael-list-rows">
+                    <div ng-repeat="renewal in beneficiary.renewals" class="row vpad10">
+
+                        <div class="col-md-8 vcenter">
+                            <span  ng-class="{'-1':'text-muted','0':'text-success'}[renewal.position]">
+                                <i class="hidden-xs fa fa-retweet"></i>
+                                {{renewal.start|date}}
+                                <i class="fa fa-long-arrow-right text-primary"></i>
+                                {{renewal.finish|date}}
+                                <br />
+                            </span>
+
+                            <small title="{{'Initial quantity without this user personal adjustments'|translate}}">{{getUnmodifiedQuantity(renewal)|number}} {{beneficiary.initial_quantity_dispUnit}}</small>
+                        </div>
+
+                        <div class="col-md-1 hidden-xs hidden-sm text-right vcenter" title="{{'Consumed quantity'|translate}}">
+                            {{renewal.consumed_quantity|number}} /
+                        </div>
+
+                        <div class="col-md-3 text-right vcenter">
+                            <div class="input-group" ng-class="isModified(renewal)? 'has-warning' : 'has-success'">
+                                <input class="form-control" type="number" ng-model="renewal.initial_quantity" step="any" />
+                                <div class="input-group-addon">{{beneficiary.disp_unit}}</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group top30">
+                <label for="adjustment_comment" translate>Justification, write about this manual adjustment</label>
+                <textarea class="form-control" id="adjustment_comment" ng-model="comment"></textarea>
+            </div>
+
+
+            <div class="col-sm-12 text-center top30">
+                <button class="btn btn-primary" ng-click="save()" translate>Save</button>
+                <button class="btn btn-link" ng-click="cancel()" translate>Cancel</button>
+            </div>
+
+        </form>
+    </div>
+</div>

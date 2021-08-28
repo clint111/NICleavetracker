@@ -1,0 +1,59 @@
+
+<div class="row top30" ng-if="request.approvalSteps.length!==0">
+    <h4 class="text-info"><i class="fa fa-sitemap"></i> <span translate>Ongoing approval steps</span></h4>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th translate>Status</th>
+            <th class="hidden-xs hidden-sm" translate>Department</th>
+            <th translate>Approvers</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="step in request.approvalSteps | reverse">
+            <td>
+                <span ng-class="[{ 'label label-success': step.status=='accepted' }, { 'label label-danger': step.status=='rejected' }]">
+                    <i ng-class="[{ 'fa fa-thumbs-up': step.status=='accepted' }, { 'fa fa-thumbs-down': step.status=='rejected' }]"></i>
+                    {{step.dispStatus}}
+                </span>
+            </td>
+            <td class="hidden-xs hidden-sm">{{step.department}}</td>
+            <td>
+                <div class="bottom5" ng-repeat="approver in step.approvers">
+                    <i class="fa fa-user" ng-if="!approver.imageUrl"></i>
+                    <img ng-if="approver.imageUrl" ng-src="{{approver.imageUrl}}" class="img-rounded" height="30" />
+                    &nbsp; {{approver.lastname}} {{approver.firstname}}
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="row top30">
+    <h4 class="text-info"><i class="fa fa-comments"></i> <span translate>Interventions history</span></h4>
+    <div class="gadael-list-rows">
+        <div class="row" ng-repeat="log in request.requestLog">
+            <div class="col-md-2 hidden-xs hidden-sm text-center">
+                <i class="fa fa-user fa-2x" ng-if="!log.userCreated.id.imageUrl"></i>
+                <img ng-if="log.userCreated.id.imageUrl" ng-src="{{log.userCreated.id.imageUrl}}" class="img-rounded" height="50" />
+                <br />
+                {{log.userCreated.name}}
+            </div>
+            <div class="col-md-10">
+                <p class="text-primary"><i class="fa fa-calendar"></i> {{log.timeCreated|date:'medium'}}</p>
+                <div ng-if="log.comment" class="panel panel-default">
+                  <div class="panel-body">
+                    <i class="glyphicon glyphicon-comment text-primary" title="{{'Comment'|translate}}" bs-tooltip></i>&nbsp; {{log.comment}}
+                  </div>
+                </div>
+                <p><small>{{log.actionSummary}}</small></p>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="row">
+	<div class="col-xs-12 col-sm-9">
+
+		<div class="row gadael-list-header">
+
+            <div class="col-sm-3 text-center">
+				<button type="button" class="btn btn-primary"
+                        data-placement="bottom"
+
+                        data-content-template="partials/admin/popover-users.html"
+                        data-auto-close="1"
+                        bs-popover>
+                    <i class="fa fa-plus"></i> <span translate>Add a request</span>
+                </button>
+			</div>
+
+			<div class="col-xs-12 col-sm-8 text-center">
+
+				<bgf-pagination
+					per-page="25"
+					collection="requests"
+					url="'rest/admin/requests'"
+					url-params="search"
+					template-url="partials/utils/paginate-anything.html">
+				</bgf-pagination>
+			</div>
+		</div>
+
+		<div class="gadael-list-rows">
+			<div class="row" ng-repeat="request in requests">
+				<div class="col-xs-1">
+                    <a ng-href="#{{getViewUrl(request)}}" class="btn btn-info btn-xs hidden-print" role="button">
+                        <i class="fa fa-plus-circle"></i> <span class="hidden-xs" translate>View</span>
+                    </a>
+                </div>
+
+                <div class="col-md-3 text-center">
+                    <img ng-src="{{request.user.id.imageUrl}}" ng-if="request.user.id.imageUrl" height="50" class="img-rounded" /><br />
+                    {{request.user.name}}
+                </div>
+
+
+                <div class="col-md-5" ng-include="'partials/utils/common/request/request-list-type.html'">
+                </div>
+
+                <div class="col-md-3" ng-include="'partials/utils/common/request/request-list-status.html'">
+                </div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<div role="search" class="col-xs-12 col-sm-3">
+
+		<h2><i class="fa fa-search"></i> <span translate>Search in requests</span></h2>
+
+		<div class="form-group">
+			<label for="search_username" translate>By user name:</label><br />
+			<input type="text" class="form-control" id="search_username" ng-model="search['user.name']" ng-model-options="{ debounce: 500 }" />
+		</div>
+
+
+        <div class="form-group">
+			<label for="search_type" translate>By type:</label><br />
+			<select class="form-control" id="search_type" ng-model="search.type">
+                <option></option>
+                <option value="absence" translate>Absence</option>
+                <option value="time_saving_deposit" translate>Time saving deposit</option>
+                <option value="workperiod_recover" translate>Overtime declaration</option>
+            </select>
+		</div>
+
+
+        <div class="form-group">
+			<label for="search_statuscreated" translate>By status:</label><br />
+			<select class="form-control" id="search_statuscreated" ng-model="search['status.created']">
+                <option></option>
+                <option value="waiting" translate>Waiting</option>
+                <option value="accepted" translate>Accepted</option>
+                <option value="rejected" translate>Rejected</option>
+            </select>
+		</div>
+
+        <div class="form-group">
+			<label for="search_type" translate>By department:</label><br />
+			<select class="form-control" id="search_department" ng-model="search['user.department']" ng-options="department.name as department.name for department in departments">
+                <option></option>
+            </select>
+		</div>
+
+	</div>
+</div>

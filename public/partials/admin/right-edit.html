@@ -1,0 +1,249 @@
+<h1 ng-if="undefined === right._id"><i class="fa fa-edit text-muted"></i> <span translate>Create a leave right</span></h1>
+<h1 ng-if="undefined !== right._id"><i class="fa fa-edit text-muted"></i> <span translate>Modify a leave right</span></h1>
+
+<form role="form" class="top30">
+    <div class="form-group">
+        <label for="right_name" translate>Name</label>
+        <input type="text" class="form-control" id="right_name" ng-model="right.name" ng-readonly="nameReadOnly" ng-required="required" />
+    </div>
+
+    <div class="form-group">
+        <label for="right_description" translate>Description</label>
+        <textarea class="form-control" id="right_description" ng-model="right.description" ng-readonly="descriptionReadOnly"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="right_type" translate>Type</label>
+        <select class="form-control" id="right_type" ng-model="right.type._id" ng-options="type._id as type.name for type in types">
+            <option></option>
+        </select>
+    </div>
+
+    <div class="row top30">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+
+                <div class="panel-heading"><span translate>Quantity provided on each renewals</span></div>
+                <div class="panel-body">
+
+                    <p>{{quantityLabel}}</p>
+
+                    <div ng-if="editQuantity">
+
+                        <div class="form-group">
+                            <label class="checkbox-inline"><input type="checkbox" ng-model="right.infiniteQuantity" /><span translate>No initial quantity, unbounded right</span></label>
+                        </div>
+
+                        <div class="form-group" ng-if="!right.infiniteQuantity">
+                            <label for="right_quantity" class="control-label" translate>Default quantity</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="right_quantity" ng-disabled="right.infiniteQuantity" ng-model="right.quantity" step="any" />
+
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-model="right.quantity_unit" placeholder="{{'Select unit'|translate}}" bs-options="qunit.value as qunit.label for qunit in quantityUnits" bs-select>Select unit</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="form-group" ng-if="!right.infiniteQuantity">
+                            <label for="addMonthly_quantity" translate>Quantity to add every month</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="addMonthly_quantity" ng-model="right.addMonthly.quantity" step="any" />
+                                <span class="input-group-addon" ng-if="right.quantity_unit=='D'"><span translate>Days</span></span>
+                                <span class="input-group-addon" ng-if="right.quantity_unit=='H'"><span translate>Hours</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="right.addMonthly.quantity>0">
+                        <label for="addMonthly_max" translate>Do not add monthly quantity if renewal quantity greater than</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="addMonthly_max" ng-model="right.addMonthly.max" step="any" />
+                            <span class="input-group-addon" ng-if="right.quantity_unit=='D'"><span translate>Days</span></span>
+                            <span class="input-group-addon" ng-if="right.quantity_unit=='H'"><span translate>Hours</span></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="!right.infiniteQuantity">
+                        <label class="checkbox-inline"><input type="checkbox" ng-model="right.autoAdjustmentActive" /><span translate>Adjust the available quantity automatically from the consumption of other rights</span></label>
+                    </div>
+
+                    <div class="form-group" ng-if="right.autoAdjustmentActive">
+                        <label for="autoAdjustment_quantity" translate>Adjustements quantity</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="autoAdjustment_quantity" ng-model="right.autoAdjustment.quantity" step="any" />
+                            <span class="input-group-addon" ng-if="right.quantity_unit=='D'"><span translate>Days</span></span>
+                            <span class="input-group-addon" ng-if="right.quantity_unit=='H'"><span translate>Hours</span></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="right.autoAdjustmentActive">
+                        <label for="autoAdjustment_step" translate>Create an adjustment every</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="autoAdjustment_step" ng-model="right.autoAdjustment.step" step="any" />
+                            <span class="input-group-addon" ng-if="right.quantity_unit=='D'"><span translate>Days</span></span>
+                            <span class="input-group-addon" ng-if="right.quantity_unit=='H'"><span translate>Hours</span></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="right.autoAdjustmentActive">
+                        <label for="autoAdjustment_types" translate>Consumed on types</label>
+                        <button id="autoAdjustment_types" type="button" class="form-control btn btn-default" ng-model="right.autoAdjustment.types" data-multiple="1" bs-options="type._id as type.name for type in types" placeholder="{{'Select types'|translate}}" bs-select>
+                          Action <span class="caret"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="panel panel-default" ng-if="right.infiniteQuantity">
+
+                <div class="panel-heading"><span translate>Legal leave duration</span></div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        <label for="defaultAbsenceLength" translate>Default absence length</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="defaultAbsenceLength" ng-model="right.defaultAbsenceLength" step="any" />
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-model="right.quantity_unit" placeholder="{{'Select unit'|translate}}" bs-options="qunit.value as qunit.label for qunit in quantityUnits" bs-select>Select unit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul>
+                        <li translate>On request creation, the user will be notified if period does not match legal duration.</li>
+                        <li translate>Users will not be allowed to consume more than this value on one request, except if the default length is set to zero.</li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading"><span translate>Options</span></div>
+                <div class="panel-body">
+
+                    <h4 translate>Active for:</h4>
+                    <div class="form-group" style="margin-left:2em">
+
+                        <label class="checkbox-inline"><input type="checkbox" ng-model="right.activeFor.account" /><span translate>User account</span></label><br />
+                        <label class="checkbox-inline" bs-tooltip title="{{'This functionality is not yet available'|translate}}"><input type="checkbox" ng-model="right.activeFor.manager" disabled="disabled" /><span translate>Manager, substituting one of his subordinates</span></label><br />
+                        <label class="checkbox-inline"><input type="checkbox" ng-model="right.activeFor.admin" /><span translate>Admin, substituting one of his subordinates</span></label>
+                    </div>
+
+                    <div class="form-group">
+                        <label><input type="checkbox" ng-model="right.hide" /> <span translate>Hide the right in user list, but can be visible on request creation if active for account</span></label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" id="right_require_approval" ng-model="right.require_approval" />
+                        <label for="right_require_approval" translate>Require approval</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" id="right_activeSpan_useDefault" ng-model="right.activeSpan.useDefault" />
+                        <label for="right_activeSpan_useDefault" translate>Use default active span</label>
+                    </div>
+
+                    <div ng-if="!right.activeSpan.useDefault">
+                      <div class="form-group">
+                        <label for="right_activeSpan_min" translate>Minimal number of days between entry date and request start date</label>
+                        <input type="number" class="form-control" id="right_activeSpan_min" ng-model="right.activeSpan.min" />
+                      </div>
+
+                      <div class="form-group">
+                        <label for="right_activeSpan_max" translate>Maximal number of days between entry date and request end date</label>
+                        <input type="number" class="form-control" id="right_activeSpan_max" ng-model="right.activeSpan.max" />
+                      </div>
+                    </div>
+
+
+                    <div class="form-group" ng-if="right.special!=='timesavingaccount'">
+
+                        <label><input type="checkbox" id="timeSaving_active" ng-model="right.timeSaving.active" />
+                            <span translate>Allow to save quantity from this right to the time deposit account</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group" ng-if="right.timeSaving.active && right.special!=='timesavingaccount'">
+
+                        <div class="form-group">
+                            <label for="timeSaving_max" translate>Saving limit per renewals</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="timeSaving_max" ng-model="right.timeSaving.max" step="any" />
+                                <span class="input-group-addon" ng-if="right.quantity_unit=='D'"><span translate>Days</span></span>
+                                <span class="input-group-addon" ng-if="right.quantity_unit=='H'"><span translate>Hours</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="right.special==='timesavingaccount'">
+                        <div class="form-group">
+                            <input type="checkbox" id="timeSaving_savingInterval_useDefault" ng-model="right.timeSavingAccount.savingInterval.useDefault" />
+                            <label for="timeSaving_savingInterval_useDefault" translate>Use default saving interval (renewal interval)</label>
+                        </div>
+
+                        <div ng-if="!right.timeSavingAccount.savingInterval.useDefault">
+                          <div class="form-group">
+                            <label for="timeSaving_savingInterval_min" translate>Years before renewal start date</label>
+                            <input type="number"  class="form-control" id="timeSaving_savingInterval_min" ng-model="right.timeSavingAccount.savingInterval.min" />
+                          </div>
+
+                          <div class="form-group">
+                            <label for="timeSaving_savingInterval_max" translate>Years before renewal end date</label>
+                            <input type="number"  class="form-control" id="timeSaving_savingInterval_max" ng-model="right.timeSavingAccount.savingInterval.max" />
+                          </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-md-6">
+                        <label for="consumption" translate>Quantity consumption for part-time right collections</label>
+                        <select class="form-control" id="consumption" ng-model="right.consumption">
+                            <option value="proportion" translate>Proportional to attendance</option>
+                            <option value="businessDays" translate>Consume next business days</option>
+                            <option value="workingDays" translate>Consume worked days</option>
+                            <option value="duration" translate>Same as the non-working duration</option>
+                            <!-- <option value="length" translate>Equal to period length</option> -->
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-6" ng-if="right.consumption=='businessDays'">
+                        <label for="consumptionBusinessDaysLimit" translate>Limit in additional business days consumption in one renewal</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="consumptionBusinessDaysLimit" ng-model="right.consumptionBusinessDaysLimit" step="any" />
+                            <span class="input-group-addon"><span translate>Days</span></span>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="right.quantity_unit=='D'">
+                        <label><input type="checkbox" id="halfDays" ng-model="right.halfDays" />
+                            <span translate>Authorize half-days consuption</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label><input type="checkbox" id="lunch" ng-model="right.lunch" />
+                            <span translate>Lunch payment on absences with this right</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-center">
+        <button class="btn btn-primary" ng-click="saveRight()" translate>Save</button>
+        <button class="btn btn-link" ng-click="back()" translate>Cancel</button>
+    </div>
+</form>

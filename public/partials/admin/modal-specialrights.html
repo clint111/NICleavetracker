@@ -1,0 +1,39 @@
+
+
+
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+
+                <form name="selectSpecialRightModal" class="pad15">
+
+                    <div class="row">
+                        <label>
+                            <input type="radio" name="specialselection" ng-model="specialselection" value="" />
+                            <span translate>No special behaviour</span>
+                        </label>
+                        <br /><span translate>No constraints on right parameters</span>
+
+                    </div>
+
+                    <div class="row top30" ng-repeat="specialRight in specialRights">
+                        <label>
+                            <input type="radio" name="specialselection" ng-model="$parent.specialselection" ng-value="specialRight" />
+                            {{specialRight.name}}
+                        </label>
+                        <br />{{specialRight.description}}
+                    </div>
+
+                    <div class="text-right top30">
+                        <button class="btn btn-primary" ng-click="setSpecialRight(specialselection);$hide()" translate>Continue</button>
+                    </div>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>

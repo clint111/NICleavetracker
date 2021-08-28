@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-3">
+
+
+        <div class="panel panel-info hidden-xs">
+            <div class="panel-heading">
+                <h3 class="panel-title" translate>Roles</h3>
+            </div>
+            <div class="panel-body">
+                <p ng-if="user.isAccount">
+                    <strong translate>Absences user account</strong><br />
+                    <small translate>The user can have vacations rights, absences requests, time saving account ...</small>
+                </p>
+
+                <p ng-if="user.isAdmin">
+                    <strong translate>Application administrator</strong><br />
+                    <small translate>The user can manager other users and departments, the application parameters ...</small>
+                </p>
+
+                <p ng-if="user.isManager">
+                    <strong translate>Department manager</strong><br />
+                    <small translate>The user may be involved in the validation of requests by the members of his department</small>
+                </p>
+            </div>
+        </div>
+
+        <div role="navigation">
+            <div class="list-group">
+                <a class="list-group-item" ng-href="#/admin/users/{{user._id}}/calendar"><i class="fa fa-calendar"></i> <span translate>View calendar</span></a>
+                <a class="list-group-item" ng-href="#/admin/requests?user.name={{user.lastname}} {{user.firstname}}"><i class="fa fa-folder text-primary"></i> <span translate>User requests</span></a>
+                <a class="list-group-item" ng-click="createRequest(user)"><i class="fa fa-plus"></i> <span translate>Create new request</span></a>
+                <a class="list-group-item" ng-click="createOvertime(user)"><i class="fa fa-plus"></i> <span translate>Declare overtime</span></a>
+                <a class="list-group-item" ng-href="#/admin/users/{{user._id}}/lunchs" ng-if="user.roles.account.lunch.active"><i class="fa fa-bell"></i> <span translate>Lunch breaks</span></a>
+                <a class="list-group-item" ng-href="#/admin/users"><i class="fa fa-user"></i> <span translate>Users list</span></a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-9">
+
+        <div class="row panel panel-primary">
+            <div class="col-xs-3 col-sm-2 top15 text-center">
+                <img class="img-rounded img-responsive" ng-if="user.imageUrl" ng-src="{{user.imageUrl}}" />
+                <i class="top15 glyphicon glyphicon-user text-muted fa-5x" ng-if="!user.imageUrl"></i>
+            </div>
+            <div class="col-xs-7 col-sm-7">
+                <h2>{{user.lastname}} {{user.firstname}}</h2>
+                <p><a href="mailto:{{user.email}}">{{user.email}}</a></p>
+                <p ng-if="user.department"><span translate>Department:</span> <a href="#/admin/departments/{{user.department._id}}">{{user.department.name}}</a></p>
+                <p class="text-danger" ng-if="!user.isActive"><i class="fa fa-ban"></i> <strong translate>This user can not connect to the application</strong></p>
+
+                <dl ng-if="api">
+                    <dt translate>Client Id:</dt>     <dd><code>{{api.clientId}}</code></dd>
+                    <dt translate>Client Secret:</dt> <dd><code>{{api.clientSecret}}</code></dd>
+                </dl>
+            </div>
+
+            <div class="col-xs-2 col-sm-3 text-right">
+
+                <a ng-href="#/admin/user-edit/{{user._id}}" class="top10 btn btn-block btn-info hidden-print" role="button">
+                    <i class="fa fa-edit"></i> <span class="hidden-xs hidden-sm" translate>Edit</span>
+                </a>
+
+                <a ng-click="delete()" class="btn btn-block btn-danger hidden-print" role="button">
+                    <i class="fa fa-times"></i> <span class="hidden-xs hidden-sm" translate>Delete</span>
+                </a>
+
+                <a ng-if="!api && user.isAdmin" ng-click="getApiToken()" class="btn btn-block hidden-print" role="button">
+                    <i class="fa fa-user-secret"></i> <span class="hidden-xs hidden-sm" translate>Get API tokens</span>
+                </a>
+
+                <a ng-if="api.clientId" ng-click="deleteApiToken()" class="btn btn-block hidden-print text-danger" role="button">
+                    <i class="fa fa-times"></i> <span class="hidden-xs hidden-sm" translate>Delete API tokens</span>
+                </a>
+
+            </div>
+        </div>
+
+        <div ng-if="user.isAccount" ng-include="'partials/admin/user-view-account.html'"></div>
+        <div ng-if="user.isManager" ng-include="'partials/admin/user-view-manager.html'"></div>
+
+    </div>
+
+
+</div>

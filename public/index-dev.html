@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html gadael-lang="en" ng-app="gadael" class="no-js">
+<head>
+  <base ng-href="{{baseUrl}}">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title ng-bind="pageTitle">Gadael</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/merged.min.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body role="document">
+    <div class="navbar navbar-default" role="navigation" bs-navbar>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"  ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="logo-container" href="#/home">
+              <img src="images/logo38.png" alt="logo" title="Gadael" style="margin-top:4px" />
+              <route-loading-indicator />
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" ng-class="{'in':!navCollapsed}">
+          <ul class="nav navbar-nav">
+            <li class="dropdown" ng-if="sessionUser.isAccount">
+				<a href="" class="dropdown-toggle" bs-dropdown="menu.account"><span translate>My vacations</span> <b class="caret"></b></a>
+			</li>
+
+            <li class="dropdown" ng-if="sessionUser.isManager">
+                <a href="" class="dropdown-toggle" bs-dropdown="menu.manager"><span translate>Departments supervision</span> <b class="caret"></b></a>
+            </li>
+
+            <li class="dropdown" ng-if="sessionUser.isAdmin">
+                <a href="" class="dropdown-toggle" bs-dropdown="menu.admin"><span translate>Admin</span> <b class="caret"></b></a>
+            </li>
+          </ul>
+
+
+			<ul class="nav navbar-nav navbar-right" ng-switch on="sessionUser.intAuthenticated">
+				<li ng-switch-when="0"><a href="#/login"><i class="fa fa-sign-in"></i> <span translate>Sign In</span></a></li>
+				<li class="dropdown" ng-switch-when="1">
+					<a href="" class="dropdown-toggle user-dropdown-menu" bs-dropdown="menu.user">
+                        <img class="img-rounded" ng-src="{{sessionUser.imageUrl}}" height="35" />
+                        <i class="fa fa-user" ng-if="!sessionUser.imageUrl"></i>
+                        &nbsp; <span ng-bind="sessionUser.firstname"></span> <span ng-bind="sessionUser.lastname"></span>
+                        <b class="caret"></b>
+                    </a>
+				</li>
+			</ul>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="container" role="main">
+	  <!--[if lt IE 7]>
+	      <p class="browsehappy"><span translate>You are using an outdated browser.</span> <a href="http://browsehappy.com/" translate>Please upgrade your browser to improve your experience.</a></p>
+	  <![endif]-->
+
+	  <div ng-repeat="alert in pageAlerts" class="container alert alert-{{alert.type}} alert-dismissable">
+		  <button type="button" class="close" ng-click="closeAlert($index)" aria-hidden="true">&times;</button>
+		  <span ng-bind="alert.message"></span>
+	  </div>
+
+	  <div ng-view gadael-auth></div>
+
+
+  </div>
+
+  <script data-main="js/main" src="bower_components/requirejs/require.js"></script>
+</body>
+</html>

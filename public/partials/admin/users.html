@@ -1,0 +1,93 @@
+
+
+
+<div class="row">
+	<div class="col-xs-12 col-sm-9">
+
+		<div class="row gadael-list-header">
+			<div class="col-sm-3 text-center">
+				<a ng-href="#/admin/user-edit" class="btn btn-primary" role="button"><i class="fa fa-plus"></i> <span translate>Add User</span></a>
+			</div>
+
+			<div class="col-xs-12 col-sm-8 text-center">
+				<bgf-pagination
+					per-page="25"
+					collection="users"
+					url="'rest/admin/users'"
+					url-params="search"
+                    num-items="totalCount"
+					template-url="partials/utils/paginate-anything.html">
+				</bgf-pagination>
+			</div>
+		</div>
+
+		<div class="gadael-list-rows">
+			<div class="row" ng-repeat="user in users">
+                 <div class="col-md-7">
+					 <a ng-href="#/admin/users/{{user._id}}" class="btn btn-info btn-xs hidden-print" role="button"><i class="fa fa-plus-circle"></i> <span class="hidden-xs hidden-sm hidden-md" translate>View</span></a>
+
+                    <i class="text-danger" ng-class="user.isActive ? '' : 'fa fa-ban'"></i>
+
+                    <strong>{{user.lastname}} {{user.firstname}}</strong>
+					<span class="badge" ng-if="user.roles.account.currentCollection.attendance && user.roles.account.currentCollection.attendance != 100" title="{{user.roles.account.currentCollection.name}}" bs-tooltip>
+						{{user.roles.account.currentCollection.attendance}}%
+					</span><br />
+
+					<small>
+	                    <span class="text-muted text-nowrap line4" ng-if="user.roles.account">&nbsp;<i class="text-info fa fa-male"></i>&nbsp;<span translate>Absences account</span></span>
+	                    <span class="text-muted text-nowrap line4" ng-if="user.roles.admin">&nbsp;<i class="text-info glyphicon glyphicon-star"></i>&nbsp;<span translate>Administrator</span></span>
+	                    <span class="text-muted text-nowrap line4" ng-if="user.roles.manager">&nbsp;<i class="text-info fa fa-sitemap"></i>&nbsp;<span translate>Department manager</span></span>
+					</small>
+				 </div>
+
+				<div class="col-md-4 hidden-xs hidden-sm line3">
+					<span class="department">{{user.department.name}}</span><br />
+					<a href="mailto:{{user.email}}">{{user.email}}</a>
+				</div>
+
+				<div class="col-xs-1 hidden-xs hidden-sm">
+					<a ng-href="#/admin/users/{{user._id}}">
+	                    <img  ng-src="{{user.imageUrl}}" class="img-rounded" height="40" ng-if="user.imageUrl" />
+					</a>
+                </div>
+
+			</div>
+		</div>
+
+
+	</div>
+
+	<div role="search" class="col-xs-12 col-sm-3">
+
+
+        <div class="bg-warning pad15 text-warning" ng-if="company.max_users" title="{{'The number of active users is limited by your plan level'|translate}}" bs-tooltip>
+            <i class="fa fa-dashboard fa-2x vcenter"></i> &nbsp; <span class="vcenter" translate>{{usersstat.activeUsers}} users / {{company.max_users}} Max</span>
+        </div>
+
+
+
+		<h2><i class="fa fa-search"></i> <span translate>Search in users</span></h2>
+
+		<div class="form-group">
+			<label for="search_name" translate>By name:</label><br />
+			<input type="text" class="form-control" id="search_name" ng-model="search.name" ng-model-options="{ debounce: 500 }" />
+		</div>
+
+		<div class="form-group">
+			<label for="search_department" translate>By department:</label><br />
+			<select class="form-control" id="search_department" ng-model="search.department" ng-options="department._id as department.name for department in departments">
+				<option></option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="search_collection" translate>By collection:</label><br />
+			<select class="form-control" id="search_collection" ng-model="search.collection" ng-options="collection._id as collection.name for collection in collections">
+				<option></option>
+			</select>
+		</div>
+
+
+
+	</div>
+</div>

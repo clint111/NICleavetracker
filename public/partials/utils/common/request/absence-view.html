@@ -1,0 +1,60 @@
+<div class="row panel panel-default line4 top10">
+    <div ng-if="request.absence.compulsoryLeave.name" class="panel-heading">
+        <h3 class="panel-title">{{request.absence.compulsoryLeave.name}}</h3>
+    </div>
+    <div class="panel-body top10">
+        <div class="col-md-6">
+            <p ng-if="request.absence.compulsoryLeave._id" translate>Compulsory leave</p>
+            <dl class="dl-horizontal">
+                <dt translate>From date:</dt>
+                <dd>{{request.events[0].dtstart|date:'medium'}}</dd>
+                <dt translate>To:</dt>
+                <dd>{{request.events[request.events.length-1].dtend|date:'medium'}}</dd>
+            </dl>
+        </div>
+
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dt translate>Status:</dt>              <dd><span ng-class="[{ 'label label-success': request.status.created=='accepted' }, { 'label label-danger': request.status.created=='rejected' }]">
+                    <i ng-class="[{ 'fa fa-thumbs-up': request.status.created=='accepted' }, { 'fa fa-thumbs-down': request.status.created=='rejected' }]"></i> {{request.status.title}}
+                </span></dd>
+            </dl>
+            <dl ng-if="stat.duration.D > 0" class="dl-horizontal">
+                <dt translate>Total consumption:</dt>   <dd>{{stat.consumed.D| number}} <span translate>Days</span></dd>
+                <dt translate>Total duration:</dt>      <dd>{{stat.duration.D| number}} <span translate>Days</span></dd>
+            </dl>
+            <dl ng-if="stat.duration.H > 0" class="dl-horizontal">
+                <dt translate>Total consumption:</dt>   <dd>{{stat.consumed.H| number}} <span translate>Hours</span></dd>
+                <dt translate>Total duration:</dt>      <dd>{{stat.duration.H| number}} <span translate>Hours</span></dd>
+            </dl>
+
+            <dl class="dl-horizontal" ng-if="request.absence.distribution.length===1">
+                <dt translate>Vacation right:</dt>
+                <dd>
+                    <i class="fa fa-asterisk"
+                       style="color:{{request.absence.distribution[0].right.type.color}}"
+                       title="{{request.absence.distribution[0].right.type.name}}"></i>
+                    {{request.absence.distribution[0].right.name}}
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row top30" ng-if="request.absence.distribution.length>1">
+    <h4 class="text-info"><i class="fa fa-book"></i> <span translate>Rights distribution</span></h4>
+    <div class="gadael-list-rows">
+        <div class="row" ng-repeat="element in request.absence.distribution">
+            <div class="col-sm-1">{{element.quantity| number}} {{element.right.dispUnit}}</div>
+            <div class="col-sm-5"><i class="fa fa-asterisk" style="color:{{element.right.type.color}}" title="{{element.right.type.name}}"></i> {{element.right.name}}</div>
+            <div class="col-sm-6 hidden-xs">
+                <span class="col-sm-2 text-right" translate>From</span> <span class="col-sm-10">{{element.events[0].dtstart|date:'medium'}}</span>
+                <span class="col-sm-2 text-right" translate>To</span>   <span class="col-sm-10">{{element.events[element.events.length-1].dtend|date:'medium'}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-include src="'partials/utils/common/request/request-view-embed.html'"></ng-include>

@@ -1,0 +1,115 @@
+<div class="row">
+    <div class="col-sm-3">
+
+        <img class="img-rounded" ng-if="user.imageUrl" ng-src="{{user.imageUrl}}" />
+        <i class="top15 glyphicon glyphicon-user text-muted fa-5x" ng-if="!user.imageUrl"></i>
+
+        <h3><a ng-href="#/admin/users/{{user._id}}">{{user.lastname}} {{user.firstname}}</a></h3>
+
+        <p><a href="mailto:{{user.email}}">{{user.email}}</a></p>
+
+        <p ng-if="user.department.name"><span translate>Department:</span> {{user.department.name}}</p>
+        <p ng-if="user.roles.account.arrival"><span translate>Arrival date:</span> {{user.roles.account.arrival|date}}</p>
+    </div>
+
+
+    <div class="col-xs-12 col-sm-9">
+
+        <div class="row panel panel-primary">
+
+            <h2 class="col-sm-12"><i class="fa fa-asterisk" style="color:{{beneficiary.right.type.color}}" title="{{beneficiary.right.type.name}}"></i> <a href="#/admin/rights/{{beneficiary.right._id}}">{{beneficiary.right.name}}</a></h2>
+
+            <div class="col-sm-6">
+                <p>
+                    <span translate>Type:</span> {{beneficiary.right.type.name}}
+                </p>
+                <p>
+                    <span translate>Default quantity on start renewal:</span> {{beneficiary.right.quantity | rightQuantity}} {{beneficiary.right.quantity_dispUnit}}
+                </p>
+                <p ng-if="beneficiary.right.defaultAbsenceLength > 0">
+                    <span translate>Legal absence length:</span> {{beneficiary.right.defaultAbsenceLength | rightQuantity}} {{beneficiary.right.quantity_dispUnit}}
+                </p>
+                <p ng-if="beneficiary.right.addMonthly.quantity">
+                    <span translate>Monthly additions:</span> {{beneficiary.right.addMonthly.quantity | number}} {{beneficiary.right.quantity_dispUnit}}
+                </p>
+                <p class="text-warning" ng-if="beneficiary.ref=='User'">
+                    <i class="fa fa-warning"></i> <span translate>Out of collection right</span><br />
+                    <span ng-if="beneficiary.from"><span translate>From</span> {{beneficiary.from | date}}</span>
+                    <span ng-if="beneficiary.to"><span translate>to</span> {{beneficiary.to | date}}</span>
+                </p>
+            </div>
+
+            <div class="col-sm-6">
+                <p ng-if="beneficiary.right.require_approval"><i class="fa fa-lock"></i> <span translate>Require approval</span></p>
+                <p ng-if="!beneficiary.right.require_approval"><i class="fa fa-unlock-alt"></i> <span translate>Do not require approval</span></p>
+
+                <ol>
+                    <li ng-repeat="rule in beneficiary.right.rules">{{rule.title}}</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="hidden-md hidden-sm hidden-xs">
+            <nvd3-line-chart
+                data="timedAvailableQuantity"
+                width="850"
+                height="200"
+                showXAxis="true"
+                showYAxis="true"
+                isArea="false"
+                xAxisTickFormat="xAxisTickFormat_Date_Format()"
+                interpolate="step-after"
+                 interactive="true"
+                 useInteractiveGuideLine="true"
+                 tooltips="true"
+                >
+                    <svg></svg>
+            </nvd3-line-chart>
+        </div>
+
+        <div ng-include="'partials/utils/common/renewal/errors.html'"></div>
+
+        <div ng-model="activePanel" class="panel-group row panel panel-{{renewal.paneltype}}" ng-repeat="renewal in beneficiary.renewals" role="tablist" aria-multiselectable="true" bs-collapse>
+
+            <div class="panel-heading pointer" role="tab" bs-collapse-toggle>
+                <i class="fa fa-retweet"></i> &nbsp; From <strong>{{renewal.start|date}}</strong> to <strong>{{renewal.finish|date}}</strong>
+            </div>
+
+            <div class="panel-collapse" role="tabpanel" bs-collapse-target>
+                <div class="panel-body">
+                    <div class="row">
+                        <dl class="dl-horizontal col-md-8">
+                            <dt translate>Initial:</dt>    <dd>{{renewal.initial_quantity | rightQuantity}} {{renewal.initial_quantity_dispUnit}} (<span translate>adjustments included</span>)</dd>
+                            <dt translate>Consumed:</dt>   <dd>{{renewal.consumed_quantity | number}} {{renewal.consumed_quantity_dispUnit}}</dd>
+                            <dt translate>Available:</dt>  <dd>{{renewal.available_quantity | rightQuantity}} {{renewal.available_quantity_dispUnit}}</dd>
+                            <dt translate>Waiting:</dt>
+                            <dd>
+                                {{renewal.waiting_quantity.created | rightQuantity}} {{renewal.waiting_quantity.created_dispUnit}} (<span translate>Addition / modification</span>)<br />
+                                {{renewal.waiting_quantity.deleted | rightQuantity}} {{renewal.waiting_quantity.deleted_dispUnit}} (<span translate>Deletion</span>)
+                            </dd>
+                        </dl>
+
+
+
+                        <div class="col-md-4">
+                            <button class="btn btn-primary" ng-click="addAdjustment(renewal);"><i class="fa fa-plus"></i> <span translate>Add a quantity adjustment</span></button>
+                        </div>
+                    </div>
+
+
+                    <div class="row" ng-if="renewal.rtt.paidLeaves">
+                        <dl class="dl-horizontal col-md-8">
+                            <dt translate>Paid leaves:</dt>         <dd translate>{{renewal.rtt.paidLeaves}} days</dd>
+                            <dt translate>Non-working days:</dt>    <dd translate>{{renewal.rtt.nonWorkingDays}} days</dd>
+                            <dt translate>Week-ends:</dt>           <dd translate>{{renewal.rtt.weekEnds}} days</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div ng-include="'partials/utils/common/renewal/combined-adjutments.html'"></div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

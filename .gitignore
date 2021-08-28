@@ -1,0 +1,16 @@
+public/bower_components/*
+node_modules/*
+/config.js
+.nodemonignore
+/bower_components
+/node_modules
+po/*.mo
+/doc/jsdoc/
+/coverage/
+.tags
+/doc/screenshots/*
+debian/debhelper-build-stamp
+debian/gadael.debhelper.log
+debian/gadael.substvars
+debian/gadael
+debian/tmp

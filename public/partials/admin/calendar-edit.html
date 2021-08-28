@@ -1,0 +1,58 @@
+
+<form role="form">
+	<div class="form-group">
+		<label for="calendar_name" translate>Calendar name</label>
+		<input type="text" class="form-control" id="calendar_name" ng-model="calendar.name" />
+	</div>
+
+	<div class="form-group">
+		<label for="calendar_url" translate>Url of the calendar ICS file</label>
+		<input type="text" class="form-control" id="calendar_url" ng-model="calendar.url" />
+	</div>
+
+	<div class="form-group col-lg-6">
+		<p><strong translate>Calendar type:</strong></p>
+		<p>
+			<label><input type="radio" ng-model="calendar.type" value="workschedule" />
+				<span translate>Work schedule</span>
+			</label><br />
+			&nbsp; &nbsp; <small translate>Leaves requests must be included in this calendar</small>
+		</p>
+
+		<p>
+			<label><input type="radio" ng-model="calendar.type" value="nonworkingday" />
+				<span translate>Non working days</span>
+			</label><br />
+			&nbsp; &nbsp; <small translate>Leaves requests can not be reserved over these periods</small>
+		</p>
+
+        <p>
+			<label><input type="radio" ng-model="calendar.type" value="holiday" />
+				<span translate>School holidays</span>
+			</label><br />
+			&nbsp; &nbsp; <small translate>School holidays will be displayed on the bottom of the reservation calendar</small>
+		</p>
+	</div>
+
+    <div class="top30 col-lg-6" ng-if="calendar.type=='workschedule'">
+        <div class="form-group col-xs-6 col-lg-12">
+            <label for="calendar_halfDayHour" translate>Half day hour</label>
+            <input type="text" class="form-control" id="calendar_halfDayHour" bs-timepicker data-timeType="'string'" ng-model="calendar.halfDayHour" />
+            <p translate>The half day hour is used to convert hours in days durations, for example, if a period end before the half day hour, a duration of 0,5 day will be retained.</p>
+        </div>
+
+        <div class="form-group col-xs-6 col-lg-12">
+            <label for="calendar_hoursPerDay" translate>Average hours per day</label>
+            <input type="number" class="form-control" id="calendar_hoursPerDay" ng-model="calendar.hoursPerDay" step="any" />
+            <p translate>This value is used to establish a proportionality beetween rights in days and rights in hours</p>
+        </div>
+    </div>
+
+
+
+
+    <div class="col-xs-12">
+	   <button class="btn btn-primary" ng-click="saveCalendar()" translate>Save</button>
+	   <button class="btn btn-link" ng-click="back()" translate>Cancel</button>
+    </div>
+</form>

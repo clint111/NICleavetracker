@@ -1,0 +1,188 @@
+
+<div>
+
+    <div ng-if="company.maintenance" class="alert alert-warning" role="alert">
+        <i class="fa fa-warning"></i> <span translate>The application is in maintenance, requests will not be modifiables</span>
+    </div>
+
+
+    <div class="public-home" ng-if="!sessionUser.isAuthenticated">
+        <div class="top-gradiant">
+            <div class="public-header-text">
+                <h2 translate>Wellcome to your absence manager</h2>
+                <p translate>Please log into the application to see your account informations</p>
+            </div>
+
+        </div>
+        <div class="public-home-app-infos">
+            <h3>{{company.name}}</h3>
+            <div class="icon-position">
+                <i class="fa fa-book fa-5x"></i>
+            </div>
+        </div>
+        <div class="bottom-gradiant">
+
+
+            <div ng-if="company.home_text.length>0" class="home-text text-center">
+                <p ng-repeat="paragraph in company.home_text|nlToArray track by $index">{{paragraph}}</p>
+            </div>
+
+            <p class="text-center"><a class="btn btn-primary btn-lg" href="#/login" translate>Login</a></p>
+
+
+            <div class="devices text-center">
+                <img src="images/devices.png" />
+
+                <p><a target="_blank" href="https://www.gadael.com">gadael.com</a></p>
+            </div>
+        </div>
+
+        <div class="public-footer">
+
+            <p translate>Follow Gadael on your favorite social network!</p>
+
+            <div class="social">
+                <a href="https://www.facebook.com/Gadael-102438326940648" title="Facebook"><i class="fa fa-facebook"></i></a> &nbsp;
+                <a href="https://twitter.com/G4dael" title="Twitter"><i class="fa fa-twitter"></i></a> &nbsp;
+                <a href="https://www.linkedin.com/company/11006685" title="LinkedIn"><i class="fa fa-linkedin"></i></a> &nbsp;
+                <a href="https://www.youtube.com/channel/UC14z7x6iP79ATmeS0xA9CoA" title="Youtube"><i class="fa fa-youtube"></i></a> &nbsp;
+                <a href="https://plus.google.com/communities/112621883074710822989" title="Google+"><i class="fa fa-google-plus"></i></a> &nbsp;
+                <a href="https://www.github.com/gadael/gadael" title="Github"><i class="fa fa-github"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <div ng-if="sessionUser.isAuthenticated">
+
+        <div ng-if="company.home_text.length>0" class="home-text text-center">
+            <p ng-repeat="paragraph in company.home_text|nlToArray track by $index">{{paragraph}}</p>
+        </div>
+    </div>
+
+    <div class="jumbotron" ng-if="sessionUser.isAuthenticated && !sessionUser.isAccount && !sessionUser.isManager && !sessionUser.isAdmin">
+
+        <h2 translate>New account created</h2>
+
+        <p translate>Your account have no access to a rôle in this application,
+            the administrators have been made aware of the problem. You will be notified by email when they give you access
+            to your absences rights account.
+        </p>
+    </div>
+
+
+    <div ng-if="sessionUser.isAccount">
+
+        <h2 translate>My account</h2>
+
+        <div class="col-lg-8 col-sm-6 col-xs-12">
+
+
+            <div class="gadael-list-rows">
+                <div class="row" ng-repeat="renewal in renewals">
+                    <div ng-switch="useEndDate(renewal)">
+                        <span ng-switch-when="false"><strong translate>Always available</strong></span>
+                        <span ng-switch-when="true"><strong translate>Up to {{renewal.finish|date}}</strong></span>
+                    </div>
+
+                    <div ng-repeat="beneficiary in renewal.beneficiaries" class="row">
+                        <div class="col-xs-3">{{beneficiary.available_quantity|rightQuantity}} {{beneficiary.available_quantity_dispUnit}}</div>
+                        <div class="col-xs-9">
+                            <a ng-href="#/account/beneficiaries/{{beneficiary._id}}">
+                                <i title="{{beneficiary.right.type.name}}" class="fa fa-asterisk" style="color:{{beneficiary.right.type.color}}"></i> {{beneficiary.right.name}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top30">
+                <button type="button" class="btn btn-primary" ng-click="createRequest()">
+                    <i class="fa fa-plus"></i> <span translate>Add a request...</span>
+                </button>
+                <br />
+                <br />
+            </div>
+        </div>
+
+
+
+
+        <div class="col-lg-4 col-sm-6 hidden-xs">
+
+
+
+            <h3 class="text-info text-center donutcharttitle">
+                <span ng-if="renewalChart.availableDays!=0">
+                    {{renewalChart.availableDays|number}}
+                    <span translate translate-n="renewalChart.availableDays" translate-plural="days">day</span>
+                </span>
+                <span ng-if="renewalChart.availableHours!=0">
+                    , {{renewalChart.availableHours|number}}
+                    <span translate translate-n="renewalChart.availableHours" translate-plural="hours">hour</span>
+                </span>
+                <br />
+                <small translate>{{renewalChart.percentDays|number}}% consumed</small>
+            </h3>
+
+            <nvd3-pie-chart
+                data="renewalChart.days"
+                id="daysChart"
+                width="400"
+                height="400"
+                x="renewalChart.xFunction()"
+                y="renewalChart.yFunction()"
+                color="renewalChart.colorFunction()"
+                noData="'No ongoing renewal with rights'"
+                tooltips="true"
+                tooltipcontent="renewalChart.toolTipContentFunction()"
+                donut="true"
+                showLabels="true"
+                >
+                <svg height="250"></svg>
+            </nvd3-pie-chart>
+
+        </div>
+
+
+
+    </div>
+
+
+    <div ng-if="sessionUser.isManager">
+
+        <div class="top30 row">
+
+            <h2 class="col-md-6 top30" translate translate-n="departments.length" translate-plural="Departments Management">Department Management</h2>
+
+            <div class="col-md-6 text-right top30">
+                <button ng-if="waitingrequests.length == 0" class="btn btn-default" disabled="disabled">
+                    <i class="fa fa-inbox"></i> <span translate>Nothing to approve</span>
+                </button>
+
+                <a class="btn btn-default" href="#/manager/waitingrequests" ng-if="waitingrequests.length > 0">
+                    <i class="fa fa-inbox"></i>
+                    <span translate>Requests waiting for approval</span> <span class="badge">{{waitingrequests.length}}</span>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12" ng-repeat="department in departments">
+                {{department.name}}
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div ng-if="sessionUser.isAdmin && !sessionUser.isManager && !sessionUser.isAccount">
+        <ng-include src="'partials/utils/wellcome.html'"></ng-include>
+    </div>
+
+</div>

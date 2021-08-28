@@ -1,0 +1,54 @@
+<h1 ng-if="undefined === department._id"><i class="fa fa-magic text-muted"></i> <span translate>Create a department</span></h1>
+<h1 ng-if="undefined !== department._id"><i class="fa fa-edit text-muted"></i> <span translate>Modify a department</span></h1>
+
+<div class="col-xs-12">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 bg-info pad15 top15">
+            <i class="fa fa-question-circle fa-pull-left fa-3x" style="color:white"></i>
+            <p translate>A department is a group of employees, managers may be assigned to the approval of leave requests made by the department members</p>
+        </div>
+    </div>
+    <br />
+</div>
+
+<form role="form">
+
+    <div class="form-group top30">
+        <label for="department_name" translate>Department name</label>
+        <input type="text" class="form-control" id="department_name" ng-model="department.name" />
+    </div>
+
+    <div class="form-group" ng-if="departments.length > 0">
+        <label for="department_parent" translate>Parent department</label>
+        <select class="form-control" ng-model="department.parent" ng-options="dep.name for dep in departments track by dep._id">
+            <option value=""></option>
+        </select>
+    </div>
+
+    <div class="radio top30">
+        <label>
+            <input type="radio" value="OR" ng-model="department.operator" />
+            <span translate>At least one manager must confirm approval step</span>
+        </label>
+    </div>
+
+    <div class="radio">
+        <label>
+            <input type="radio" value="AND" ng-model="department.operator" />
+            <span translate>All managers must confirm approval step</span>
+        </label>
+    </div>
+
+    <div class="form-group top30">
+        <label for="department_minActiveUsers" translate>Minimal number of active users</label>
+        <input type="number" class="form-control" id="department_minActiveUsers" ng-model="department.minActiveUsers" />
+    </div>
+    <p><em translate>New leave requests will be forbidden if the number of available users in department is equal to this value</em></p>
+
+
+    <div class="top30">
+        <button class="btn btn-primary" ng-click="saveDepartment()" translate>Save</button>
+        <button class="btn btn-link" ng-click="back()" translate>Cancel</button>
+    </div>
+</form>

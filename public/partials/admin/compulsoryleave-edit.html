@@ -1,0 +1,89 @@
+<h1 ng-if="undefined === compulsoryleave._id"><i class="fa fa-magic text-muted"></i> <span translate>Create a compulsory leave</span></h1>
+<h1 ng-if="undefined !== compulsoryleave._id"><i class="fa fa-edit text-muted"></i> <span translate>Modify a compulsory leave</span></h1>
+
+<form role="form">
+
+    <div class="form-group top30">
+        <label for="compulsoryleave_name" translate>Compulsory leave name (this will be visible on users calendars)</label>
+        <input type="text" class="form-control" id="compulsoryleave_name" ng-model="compulsoryleave.name" />
+    </div>
+
+    <div class="form-group">
+        <label for="compulsoryleave_description" translate>Description</label>
+        <textarea class="form-control" id="compulsoryleave_description" ng-model="compulsoryleave.description"></textarea>
+    </div>
+
+
+    <div class="form-group">
+        <label for="compulsoryleave_right" translate>Leave right</label>
+        <select class="form-control" ng-model="compulsoryleave.right" ng-options="right.name for right in rights track by right._id">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="compulsoryleave_right" translate>Leave period</label>
+        <div class="form-inline">
+            <div class="form-group">
+                <div class="input-group">
+                    <label class="sr-only" for="compulsoryleaveBeginDate">Begin date</label>
+                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                    <input id="adbsenceBeginDate" class="form-control" ng-model="compulsoryleave.dtstart" bs-datepicker type="text" placeholder="{{'Begin date'|translate}}" data-autoclose="1" />
+                </div>
+
+                <div class="input-group">
+                    <label class="sr-only" for="compulsoryleaveBeginHour">Begin hour</label>
+                    <div class="input-group-addon"><i class="fa fa-clock-o"></i></div>
+                    <input id="compulsoryleaveBeginHour" class="form-control" ng-model="compulsoryleave.dtstart" bs-timepicker type="text" size="5" maxsize="5" placeholder="{{'Hour'|translate}}" />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="input-group">
+                    <label class="sr-only" for="compulsoryleaveEndDate">End date</label>
+                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                    <input id="adbsenceEndDate" class="form-control" ng-model="compulsoryleave.dtend" bs-datepicker type="text" placeholder="{{'End date'|translate}}" data-autoclose="1" />
+                </div>
+
+                <div class="input-group">
+                    <label class="sr-only" for="compulsoryleaveEndHour">End hour</label>
+                    <div class="input-group-addon"><i class="fa fa-clock-o"></i></div>
+                    <input id="compulsoryleaveEndHour" class="form-control" ng-model="compulsoryleave.dtend" bs-timepicker type="text" size="5" maxsize="5" placeholder="{{'Hour'|translate}}" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group top30">
+        <strong translate>Create leaves for users in</strong>
+        <select ng-model="population">
+            <option value="collections" translate>collections</option>
+            <option value="departments" translate>departments</option>
+        </select>
+    </div>
+
+    <div class="form-group" ng-if="population=='collections'">
+        <div class="checkbox" ng-repeat="collection in collections">
+            <label>
+            <input type="checkbox" value="{{collection._id}}"
+                   ng-checked="isChecked(compulsoryleave.collections, collection)"
+                   ng-click="toggleSelection(compulsoryleave.collections, collection)" />
+            {{collection.name}}</label>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="population=='departments'">
+        <div class="checkbox" style="vertical-align:top" ng-repeat="department in departments">
+            <label>
+            <input type="checkbox" value="{{department._id}}"
+                   ng-checked="isChecked(compulsoryleave.departments, department)"
+                   ng-click="toggleSelection(compulsoryleave.departments, department)" />
+            {{department.name}}</label>
+        </div>
+    </div>
+
+    <div class="top30">
+        <button class="btn btn-primary" ng-click="save()" translate>Save</button>
+        <button class="btn btn-link" ng-click="back()" translate>Cancel</button>
+    </div>
+</form>

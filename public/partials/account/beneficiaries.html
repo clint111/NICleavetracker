@@ -1,0 +1,68 @@
+
+    <h3 class="row" translate>Vacations rights</h3>
+
+    <div class="gadael-list-rows">
+        <div ng-repeat="beneficiary in beneficiaries" class="row">
+
+            <div class="col-md-8">
+
+                <h4>
+                    <a ng-href="#/account/beneficiaries/{{beneficiary._id}}">
+                        <i title="{{beneficiary.right.type.name}}" class="fa fa-asterisk" style="color:{{beneficiary.right.type.color}}"></i> {{beneficiary.right.name}}
+                    </a>
+                </h4>
+
+                <ol>
+                    <li ng-repeat="rule in beneficiary.right.rules">{{rule.title}}</li>
+                </ol>
+
+                <div class="top15 row">
+                    <dl class="col-md-4">
+                        <dt translate>Available quantity</dt>
+                        <dd>{{beneficiary.available_quantity|rightQuantity}} {{beneficiary.available_quantity_dispUnit}}</dd>
+                    </dl>
+
+                    <dl class="col-md-4" ng-if="beneficiary.right.defaultAbsenceLength > 0">
+                        <dt translate>Legal absence length</dt>
+                        <dd>{{beneficiary.right.defaultAbsenceLength|rightQuantity}} {{beneficiary.available_quantity_dispUnit}}</dd>
+                    </dl>
+
+                    <dl class="col-md-4" ng-if="beneficiary.waiting_quantity.created > 0">
+                        <dt translate>Waiting approval</dt>
+                        <dd class="text-success">{{beneficiary.waiting_quantity.created|rightQuantity}} {{beneficiary.waiting_quantity.created_dispUnit}}</dd>
+                    </dl>
+
+                    <dl class="col-md-4" ng-if="beneficiary.waiting_quantity.deleted > 0">
+                        <dt translate>Waiting delete approval</dt>
+                        <dd class="text-danger">{{beneficiary.waiting_quantity.deleted|rightQuantity}} {{beneficiary.waiting_quantity.deleted_dispUnit}}</dd>
+                    </dl>
+                </div>
+
+                <div class="col-xs-12 top15" ng-repeat="err in beneficiary.errors">
+                    <i class="fa fa-warning fa-3x fa-pull-left text-danger"></i>
+                    {{err.renewal.start|date}} <i class="fa fa-long-arrow-right text-primary"></i> {{err.renewal.finish|date}}<br />
+                    <strong class="text-danger">{{err.error}}</strong>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4 top30" ng-init="renewal = getCurrentPeriod(beneficiary.renewals)">
+                <dl class="top15" ng-if="renewal">
+                    <dt translate>Period end</dt>
+                    <dd><i class="fa fa-long-arrow-right text-primary"></i> {{renewal.finish|date}}</dd>
+                </dl>
+
+                <div ng-if="!renewal">
+                    <i class="fa fa-times-circle text-danger"></i>
+                    <span translate>No open period</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="alert alert-danger" role="alert" ng-if="beneficiaries.$resolved && !beneficiaries.length">
+        <span translate>This user has no configured vacation rights for the current period</span>
+    </div>

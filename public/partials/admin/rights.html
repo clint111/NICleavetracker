@@ -1,0 +1,88 @@
+<div class="row">
+	<div class="col-xs-12 col-sm-9">
+
+		<div class="row gadael-list-header">
+			<div class="col-sm-3 text-center">
+				<a ng-href="#/admin/right-edit" class="btn btn-primary" role="button"><i class="fa fa-plus"></i> <span translate>Add right</span></a>
+            </div>
+
+			<div class="col-xs-12 col-sm-8 text-center">
+				<bgf-pagination
+					per-page="25"
+					collection="rights"
+					url="'rest/admin/rights'"
+					url-params="search"
+					template-url="partials/utils/paginate-anything.html">
+				</bgf-pagination>
+			</div>
+		</div>
+
+		<div class="gadael-list-rows">
+			<div class="row" ng-repeat="right in rights">
+				<div class="col-sm-2 col-xs-1">
+					<a ng-href="#/admin/rights/{{right._id}}" class="btn btn-info btn-xs hidden-print" role="button"><i class="fa fa-plus-circle"></i> <span class="hidden-xs" translate>View</span></a>
+				</div>
+
+                <div class="col-sm-5 col-xs-9">
+                    <i class="line4 fa fa-asterisk" style="color:{{right.type.color}}" title="{{right.type.name}}"></i> <strong>{{right.name}}</strong><br />
+
+                    <div class="line4" ng-if="!right.currentRenewal">
+                        <i class="fa fa-exclamation-triangle text-warning"></i> <span translate>No active renewal</span>
+                    </div>
+
+                    <div class="line4" ng-if="right.currentRenewal">
+                        <i class="fa fa-calendar text-info"></i>
+                        <span translate>From</span> {{right.currentRenewal.start|date}}
+                        <span translate>to</span> {{right.currentRenewal.finish|date}}
+                    </div>
+                </div>
+
+				<div class="col-md-2 hidden-xs">
+					<span title="{{right.specialright.quantityLabel}}" bs-tooltip>{{right.quantity | rightQuantity}}</span> {{right.dispUnit}}
+					<div ng-if="right.defaultAbsenceLength > 0">
+						<span class="label label-primary" title="{{'Legal quantity for one leave'|translate}}" bs-tooltip>
+							<i class="fa fa-legal"></i> <span>{{right.defaultAbsenceLength | rightQuantity}}</span> {{right.dispUnit}}
+						</span>
+					</div>
+				</div>
+
+				<div class="col-md-3 hidden-xs hidden-sm">
+					<div class="text-right">
+						<span class="label label-warning" ng-if="right.require_approval" title="{{'Require approval'|translate}}" bs-tooltip><i  class="fa fa-lock"></i></span>
+				        <span class="label label-success" ng-if="!right.require_approval" title="{{'Do not require approval'|translate}}" bs-tooltip><i  class="fa fa-unlock-alt" ></i></span>
+					</div>
+					<div class="line4">
+						<span class="label label-default" title="{{'Active for the user'|translate}}" ng-if="right.activeFor.account" bs-tooltip><i class="fa fa-male"></i> User</span>
+	                    <span class="label label-default" ng-if="right.activeFor.admin" title="{{'Active for the administrator'|translate}}" bs-tooltip><i class="fa fa-star"></i> Admin</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<div role="search" class="col-xs-12 col-sm-3">
+
+		<h2><i class="fa fa-search"></i> <span translate>Search in rights</span></h2>
+
+		<div class="form-group">
+			<label for="search_name" translate>By name:</label><br />
+			<input type="text" class="form-control" id="search_name" ng-model="search.name" ng-model-options="{ debounce: 500 }" />
+		</div>
+
+		<div class="form-group">
+			<label for="search_type" translate>By type:</label><br />
+			<select class="form-control" id="search_type" ng-model="search.type" ng-options="type._id as type.name for type in types">
+				<option></option>
+			</select>
+		</div>
+
+        <div class="form-group">
+			<label for="search_collection" translate>By collection:</label><br />
+			<select class="form-control" id="search_collection" ng-model="search.collection" ng-options="collection._id as collection.name for collection in collections">
+				<option></option>
+			</select>
+		</div>
+	</div>
+</div>

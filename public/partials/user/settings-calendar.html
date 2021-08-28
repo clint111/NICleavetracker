@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-3 top30" ng-include="'partials/utils/common/settings/menu.html'">
+    </div>
+
+    <div class="col-sm-9">
+
+        <h3 translate>Link with your google calendar</h3>
+
+        <div ng-if="!loaded">
+            <i class="fa fa-spinner fa-spin fa-fw"></i>
+            <span class="sr-only" translate>Loading...</span>
+        </div>
+
+        <form ng-if="loaded" role="form" name="userSettings" class="top30">
+
+            <div ng-if="!connected">
+                <div class="col-md-12 pad15 panel panel-default">
+                    <div class="col-md-8">
+                        <i class="fa fa-times-circle-o text-danger vcenter"></i> &nbsp;
+                        <strong class="text-primary vcenter" translate>Your calendar is not connected</strong>
+                    </div>
+
+                    <div class="col-md-4 text-right">
+                        <a class="btn btn-default" ng-href="/rest/user/googlecalendar" >
+                            <i class="fa fa-chain"></i> <span translate>Connect</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div ng-if="connected">
+
+                <div class="col-md-12 pad15 panel panel-default">
+                    <div class="col-md-8">
+                        <i class="fa fa-2x fa-check-circle-o text-success vcenter"></i> &nbsp;
+                        <strong class="text-primary vcenter" translate>Your calendar is connected</strong>
+                    </div>
+
+                    <div class="col-md-4 text-right">
+                        <button class="btn btn-danger" ng-click="googleDisconnect()">
+                        <i class="fa fa-chain-broken"></i> <span translate>Disconnect</span>
+                        </button>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="googlecalendar" translate>Save leave periods to</label>
+
+                    <div class="input-group">
+                        <select class="form-control" id="googlecalendar" ng-model="user.google.calendar" ng-options="calendar.id as calendar.summary for calendar in calendars">
+                        </select>
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" ng-click="add()"><i class="fa fa-plus"></i><span class="sr-only" translate>Add</span></button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <p>
+                    <i class="fa fa-info-circle fa-2x vcenter text-info"></i> &nbsp;
+                    <em class="vcenter">Only writable secondary calendars are listed here</em>
+                </p>
+
+
+
+                <div class="top30">
+                    <button class="btn btn-primary" ng-click="userSettings.$valid && saveUser()" translate>Save</button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>

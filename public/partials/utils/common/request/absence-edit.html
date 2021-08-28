@@ -1,0 +1,126 @@
+<div ng-if="periodSelection">
+
+    <div tp-teleperiod>
+        <tp-period-picker
+                          workingtimes="loadWorkingTimes"
+                          events="loadEvents"
+                          dtstart="selection.begin"
+                          dtend="selection.end"
+                          focusdate="selection.begin"
+                          periods="selection.periods"
+                          selectedevents="request.events"
+                          ready="selectionReady"></tp-period-picker>
+        <tp-timeline name="Scholar holidays" events="loadScholarHolidays"></tp-timeline>
+    </div>
+
+    <form class="form-inline" role="form">
+
+        <div class="col-sm-7 top17">
+            <ng-include src="'partials/utils/common/request/periodselect.html'"></ng-include>
+        </div>
+
+        <div class="col-sm-5">
+            <h4 translate>Selected duration:</h4>
+            <p>{{selection.days}} <span translate>or</span> {{selection.hours}}</p>
+        </div>
+
+        <div class="col-sm-12 top30">
+            <button class="btn btn-primary" ng-disabled="!selection.end || !selection.begin" ng-click="next()" translate>Continue</button>
+        </div>
+    </form>
+</div>
+
+<div class="top30" ng-if="assignments">
+
+    <div class="row">
+        <div class="col-sm-7">
+            <p translate>From {{selection.begin|date:'medium'}}, to the {{selection.end|date:'medium'}}</p>
+            <p translate>Collection on the selected period: {{collection.name}}</p>
+
+        </div>
+
+        <div class="col-sm-5">
+            <div class="bg-info pad10">
+                <i class="fa fa-question-circle fa-pull-left fa-3x" style="color:white"></i>
+                <p translate>Your period selection of {{selection.days}} (or {{selection.hours}}) must be distribued into the following vacation rights</p>
+            </div>
+        </div>
+    </div>
+
+    <form class="top30 form-horizontal" role="form">
+
+        <table class="table absence-edit-distribution">
+
+            <thead>
+                <tr>
+                    <th class="col-sm-2" translate>Distribution</th>
+                    <th class="hidden-xs" translate>Consumption</th>
+                    <th translate>My rights</th>
+                    <th class="hidden-xs" translate>Available quantity</th>
+                </tr>
+            </thead>
+
+            <tfoot>
+                <tr>
+                    <td>{{distribution.total}}</td>
+                    <td class="hidden-xs">{{distribution.totalConsuption}}</td>
+                    <td></td>
+                    <td class="hidden-xs">{{available.total}}</td>
+                </tr>
+            </tfoot>
+
+
+            <tbody ng-repeat="listItem in types">
+                <tr class="active">
+                    <th colspan="3"><i role="button" class="btn btn-default fa" ng-class="getIcon(listItem)" ng-click="listItem.fold = !listItem.fold"></i> &nbsp; <i class="fa fa-asterisk" style="color:{{listItem.type.color}}"></i> {{listItem.type.groupTitle}}</th>
+                    <td class="hidden-xs" style="vertical-align:middle">
+                        <span ng-show="!listItem.fold" class="badge">{{listItem.available.display}}</span>
+                    </td>
+                </tr>
+                <tr class="form-group" ng-show="listItem.fold" ng-repeat="accountRight in listItem.accountRightsRenewals track by accountRight.renewal._id">
+
+                    <td ng-class="distribution.class[accountRight.renewal._id]" class="input-group">
+
+                        <input id="ar{{accountRight.renewal._id}}" type="number" class="form-control" ng-model="distribution.renewal[accountRight.renewal._id].quantity" step="any" min="0" />
+                        <span class="input-group-addon">{{accountRight.disp_unit}}</span>
+
+                    </td>
+                    <td class="hidden-xs">
+                        <span ng-if="distribution.renewal[accountRight.renewal._id].consumedQuantity">
+                            <i ng-if="distribution.renewal[accountRight.renewal._id].isLoading" class="fa fa-spinner fa-pulse fa-fw"></i> {{distribution.renewal[accountRight.renewal._id].consumedQuantity|number}} {{accountRight.disp_unit}}
+                        </span>
+
+                    </td>
+
+                    <td>
+                        <label for="ar{{accountRight.renewal._id}}" class="control-label">{{accountRight.name}}</label><br />
+                        <div ng-if="!accountRight.renewal.right.defaultAbsenceLength">
+                            <small translate>From {{accountRight.renewal.start|date}} to {{accountRight.renewal.finish|date}}</small>
+                        </div>
+                        <div ng-if="accountRight.renewal.right.defaultAbsenceLength > 0">
+                            <span translate>Legal duration:</span> <strong>{{accountRight.renewal.right.defaultAbsenceLength}} {{accountRight.disp_unit}}</strong>
+                        </div>
+                    </td>
+
+                    <td class="hidden-xs">
+                        {{accountRight.renewal.available_quantity | rightQuantity}} {{accountRight.available_quantity_dispUnit}}
+
+                        <span ng-if="initialQuantity[accountRight.renewal._id] > 0" title="{{'Quantity from the request in modification'|translate}}" bs-tooltip>
+                            (+ {{initialQuantity[accountRight.renewal._id]}} {{accountRight.available_quantity_dispUnit}})
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div class="hidden-lg hidden-md hidden-sm">
+            <span translate>Total consumption:</span> <strong>{{distribution.totalConsuption}}</strong>
+        </div>
+
+        <div class="top15">
+            <button class="btn btn-primary" ng-click="saveAbsence()" ng-disabled="!distribution.completed" translate>Save</button>
+            <button class="btn btn-link" ng-click="back()" translate>Cancel</button>
+        </div>
+    </form>
+</div>

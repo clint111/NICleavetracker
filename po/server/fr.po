@@ -1,0 +1,1800 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gadael 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-10 18:08+0200\n"
+"PO-Revision-Date: 2020-10-10 18:09+0200\n"
+"Last-Translator: Paul de Rosanbo <paul.derosanbo@cantico.fr>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: api/specialrights/timesavingaccount.js:25
+msgid "Time saving account"
+msgstr "Compte Épargne Temps"
+
+#: api/specialrights/timesavingaccount.js:31
+msgid ""
+"Time saving account, is necessary to activate time saving account request "
+"for users"
+msgstr ""
+"Compte épargne temps, il est nécessaire pour activer les dépôts d'épargne "
+"pour les utilisateurs"
+
+#: api/specialrights/timesavingaccount.js:36
+msgid ""
+"Quantity added by the time saving account requests will be made available "
+"for each users on their available quantity"
+msgstr ""
+"La quantité ajoutée pour les demandes d'épargne sera disponibles pour chaque "
+"utilisateur dans leur solde"
+
+#: api/specialrights/rtt.js:29 schema/Type.js:76
+msgid "RTT"
+msgstr "RTT"
+
+#: api/specialrights/rtt.js:35
+msgid ""
+"Working time reduction right, this right require an annual leave right "
+"overlapping the renewal period"
+msgstr ""
+"droit RTT, ce droit requiert un droit de congés payés annuel qui couvre la "
+"période de renouvellement"
+
+#: api/specialrights/rtt.js:60
+msgid "Less than 35 hours per week of work where found on the renewal period"
+msgstr ""
+"Moins de 35 heures de travail hebdomadaires constatées sur la période de "
+"renouvellement"
+
+#: api/specialrights/rtt.js:64
+#, javascript-format
+msgid "No collection found on the renewal period from %s to %s"
+msgstr "Pas de régime trouvé sur la période de renouvellement du %s au %s"
+
+#: api/specialrights/rtt.js:73
+msgid ""
+"The collection does not contain the number of days from the collective "
+"agreement"
+msgstr ""
+"Le régime ne contient pas le nombre de jours de la convention collective"
+
+#: api/specialrights/rtt.js:96
+msgid "RTT is computed from the user time schedule on the renewal period"
+msgstr ""
+"Les RTT sont calculés à partir du rythme de travail de l'utilisateur sur la "
+"période de renouvellement du droit"
+
+#: api/specialrights/annualleave.js:25
+msgid "Annual paid leave"
+msgstr "congé payé annuel"
+
+#: api/specialrights/annualleave.js:31
+msgid ""
+"Paid time off work granted by employers to employees to be used for whatever "
+"the employee wishes. Depending on the employer's policies, differing number "
+"of days may be offered, and the employee may be required to give a certain "
+"amount of advance notice"
+msgstr ""
+"Les congés payés accordés par les employeurs aux employés pour être utilisés "
+"pour tout ce que l'employé souhaite. Selon les politiques de l'employeur, le "
+"nombre de jours peut être différent et l'employé peut être tenu de donner un "
+"certain préavis"
+
+#: api/services/admin/accountnwdayscalendars/get.js:29
+msgid "This non working days calendar does not exists for account"
+msgstr "Cet agenda des jours fériés n'existe pas pour ce compte"
+
+#: api/services/admin/accountnwdayscalendars/delete.js:21
+msgid ""
+"this non working days calendar does not exists or is not linked to account"
+msgstr "Cet agenda des jours fériés n'existe pas ou n'est pas lié au compte"
+
+#: api/services/admin/accountnwdayscalendars/delete.js:26
+msgid ""
+"Delete a non working days calendar period already started is not allowed"
+msgstr ""
+"La suppression d'un agenda de jours fériés en cours d'utilisation n'est pas "
+"permise"
+
+#: api/services/admin/accountnwdayscalendars/delete.js:56
+msgid "The non working days has been removed from account"
+msgstr "Les jours fériés ont été retirés du compte"
+
+#: api/services/admin/accountnwdayscalendars/save.js:37
+msgid "Cant create Account non working days calendar, missing user or account"
+msgstr ""
+"Impossible de créer l'agenda des jours fériés pour le compte, le compte ou "
+"l'utilisateur est manquant"
+
+#: api/services/admin/accountnwdayscalendars/save.js:46
+#: api/services/admin/accountschedulecalendars/save.js:46
+#: api/services/admin/apitokens/delete.js:17
+#: api/services/admin/users/delete.js:25
+#: api/services/admin/accountcollections/save.js:48
+msgid "User not found"
+msgstr "L'utilisateur n'a pas été trouvé"
+
+#: api/services/admin/accountnwdayscalendars/save.js:51
+msgid ""
+"The user has no absence account, non working days calendars are only "
+"linkable to accounts"
+msgstr ""
+"L'utilisateur n'a pas de compte absences, les agendas de jours fériés "
+"peuvent être associés uniquement aux comptes"
+
+#: api/services/admin/accountnwdayscalendars/save.js:83
+#, javascript-format
+msgid "Account non working days calendar document not found for id %s"
+msgstr ""
+"Le document %s n'a pas été trouvé dans l'agenda des jours fériés du compte"
+
+#: api/services/admin/accountnwdayscalendars/save.js:99
+msgid "The account non working days calendar period has been modified"
+msgstr "La période à été modifiée dans l'agenda des jours fériés du compte"
+
+#: api/services/admin/accountnwdayscalendars/save.js:129
+msgid "The account non working days calendar period has been created"
+msgstr "La période a été créée pour l'agenda des jours fériés du compte"
+
+#: api/services/admin/collections/get.js:27
+msgid "This collection does not exists"
+msgstr "Ce régime n'existe pas"
+
+#: api/services/admin/collections/delete.js:28
+msgid "The collection has been deleted"
+msgstr "Le régime a été supprimé"
+
+#: api/services/admin/collections/save.js:30
+msgid "At least one business day is required"
+msgstr "Au moins un jour ouvré est requis"
+
+#: api/services/admin/collections/save.js:140
+msgid "The collection has been modified"
+msgstr "Le régime a été modifié"
+
+#: api/services/admin/collections/save.js:157
+msgid "The collection has been created"
+msgstr "Le régime a été créé"
+
+#: api/services/admin/departments/get.js:82
+msgid "This department does not exists"
+msgstr "Le service n'existe pas"
+
+#: api/services/admin/departments/delete.js:27
+msgid "The department has been deleted"
+msgstr "Le service a été supprimé"
+
+#: api/services/admin/departments/save.js:60
+msgid "The department has been modified"
+msgstr "Le service a été modifié"
+
+#: api/services/admin/departments/save.js:78
+msgid "The department has been created"
+msgstr "Le service a été créé"
+
+#: api/services/admin/overtimesummary/save.js:144
+msgid "Not enough overtime quantity"
+msgstr "Pas assez d'heures supplémentaires"
+
+#: api/services/admin/overtimesummary/save.js:156
+msgid "Overtime quantity has been settled"
+msgstr "Les heures supplémentaires ont été soldées"
+
+#: api/services/admin/beneficiaries/get.js:46
+msgid "This beneficiary does not exists"
+msgstr "Le bénéficiaire n'existe pas"
+
+#: api/services/admin/beneficiaries/delete.js:22
+msgid "this right does not exists or is not linked to account or collection"
+msgstr "Le droit n'existe pas ou n'est pas lié au compte ou au régime"
+
+#: api/services/admin/beneficiaries/delete.js:52
+msgid "The right has been removed from user account"
+msgstr "Le droit a été retiré du compte utilisateur"
+
+#: api/services/admin/beneficiaries/delete.js:54
+msgid "The right has been removed from the collection"
+msgstr "Le droit a été retiré du régime"
+
+#: api/services/admin/beneficiaries/save.js:51
+#, javascript-format
+msgid "beneficiary document not found for id %s"
+msgstr "Le bénéficiaire du document n'a pas été trouvé pour l'ID %s"
+
+#: api/services/admin/beneficiaries/save.js:65
+#, javascript-format
+msgid "right document not found for id %s"
+msgstr "le document du droit n'a pas été trouvé pour l'id %s"
+
+#: api/services/admin/beneficiaries/save.js:89
+msgid "The right association has been modified"
+msgstr "La liaison avec le droit a été modifiée"
+
+#: api/services/admin/beneficiaries/save.js:92
+msgid "The right association has been created"
+msgstr "Le droit associé a été créé"
+
+#: api/services/admin/calendars/get.js:33
+msgid "This calendar does not exists"
+msgstr "Ce agenda n'existe pas"
+
+#: api/services/admin/calendars/delete.js:24
+#: api/services/admin/calendars/save.js:67
+msgid "The calendar is locked"
+msgstr "Cet agenda est verrouillé"
+
+#: api/services/admin/calendars/delete.js:32
+msgid "The calendar has been deleted"
+msgstr "L'agenda a été supprimé"
+
+#: api/services/admin/calendars/save.js:79
+msgid "The calendar has been modified"
+msgstr "L'agenda a été modifié"
+
+#: api/services/admin/calendars/save.js:93
+msgid "The calendar has been created"
+msgstr "L'agenda a été créé"
+
+#: api/services/admin/lunchs/save.js:20
+msgid "Invalid date"
+msgstr "Date invalide"
+
+#: api/services/admin/lunchs/save.js:23
+msgid "Account not found from user ID"
+msgstr "Compte absence introuvable pour cet ID utilisateur"
+
+#: api/services/admin/lunchs/save.js:28
+msgid "The month to refresh must be the last created month"
+msgstr "Le mois à recalculer doit être le dernier créé"
+
+#: api/services/admin/lunchs/save.js:44
+msgid "The month has been refreshed"
+msgstr "Le mois à été recalculé"
+
+#: api/services/admin/accountschedulecalendars/get.js:30
+msgid "This schedule calendar does not exists for account"
+msgstr "Ce rythme de travail n'existe pas pour le compte"
+
+#: api/services/admin/accountschedulecalendars/delete.js:20
+msgid "this schedule calendar does not exists or is not linked to account"
+msgstr "Ce rythme de travail n'existe pas ou n'est pas lié au compte"
+
+#: api/services/admin/accountschedulecalendars/delete.js:25
+msgid "Delete a schedule calendar period already started is not allowed"
+msgstr ""
+"La suppression d'un rythme de travail déjà en cours d'utilisation n'est pas "
+"permise"
+
+#: api/services/admin/accountschedulecalendars/delete.js:56
+msgid "The calendar has been removed from account"
+msgstr "L'agenda a été retiré du compte"
+
+#: api/services/admin/accountschedulecalendars/save.js:37
+msgid "Cant create AccountScheduleCalendar, missing user or account"
+msgstr ""
+"Impossible de créer AccountScheduleCalendar, l'utilisateur ou le compte est "
+"manquant"
+
+#: api/services/admin/accountschedulecalendars/save.js:51
+msgid ""
+"The user has no absences account, schedule calendars are only linkable to "
+"accounts"
+msgstr ""
+"Cet utilisateur n'a pas de compte absence, les rythmes de travail peuvent "
+"seulement être liés aux comptes"
+
+#: api/services/admin/accountschedulecalendars/save.js:82
+#, javascript-format
+msgid "AccountScheduleCalendar document not found for id %s"
+msgstr "AccountScheduleCalendar n'a pas été trouvé pour l'ID %s"
+
+#: api/services/admin/accountschedulecalendars/save.js:99
+msgid "The account schedule period has been modified"
+msgstr "La période de rythme de travail du compte a été modifiée"
+
+#: api/services/admin/accountschedulecalendars/save.js:127
+msgid "The account schedule calendar period has been created"
+msgstr "La période de rythme de travail du compte a été créée"
+
+#: api/services/admin/apitokens/get.js:24 api/services/admin/users/get.js:37
+#: api/services/user/settings/get.js:30
+msgid "This user does not exists"
+msgstr "Cet utilisateur n'existe pas"
+
+#: api/services/admin/apitokens/delete.js:26
+msgid "User API token revoked"
+msgstr "Token API révoqué"
+
+#: api/services/admin/apitokens/save.js:39
+msgid "The API token has been created"
+msgstr "Le token API à été créé"
+
+#: api/services/admin/users/delete.js:34
+msgid "The user has been deleted"
+msgstr "L'utilisateur a été supprimé"
+
+#: api/services/admin/users/save.js:84
+msgid "This email is already used"
+msgstr "Cet adresse email est déjà utilisée"
+
+#: api/services/admin/users/save.js:103
+msgid "The user has been modified"
+msgstr "L'utilisateur a été modifié"
+
+#: api/services/admin/users/save.js:126
+msgid "The user has been created"
+msgstr "L'utiilisateur a été créé"
+
+#: api/services/admin/users/save.js:161
+msgid "No user document to save roles on"
+msgstr "Pas de document utilisateur pour effectuer l'enregistrement des rôles"
+
+#: api/services/admin/users/save.js:177
+msgid "Absence account"
+msgstr "Compte absence"
+
+#: api/services/admin/users/save.js:181
+msgid "Department manager"
+msgstr "Chef de service"
+
+#: api/services/admin/users/save.js:185
+msgid "Application administrator"
+msgstr "Administrateur de l'application"
+
+#: api/services/admin/exports/get.js:31
+msgid "moment is a mandatory parameter"
+msgstr "moment est un paramètre obligatoire"
+
+#: api/services/admin/exports/get.js:50
+msgid "from and to are mandatory parameters"
+msgstr "from et to sont des paramètres obligatoires"
+
+#: api/services/admin/exports/get.js:66
+msgid "month is a mandatory parameter"
+msgstr "month est un paramètre obligatoire"
+
+#: api/services/admin/exports/get.js:85
+msgid "from,to and rightType are mandatory parameters"
+msgstr "from,to et rightType sont des paramètres obligatoires"
+
+#: api/services/admin/exports/requests.js:18
+#: api/services/admin/exports/lunchs.js:13
+#: api/services/admin/exports/balance.js:50
+msgid "Name"
+msgstr "Nom"
+
+#: api/services/admin/exports/requests.js:19
+#: api/services/admin/exports/lunchs.js:14
+#: api/services/admin/exports/balance.js:51
+msgid "Department"
+msgstr "Service"
+
+#: api/services/admin/exports/requests.js:20
+msgid "Created on"
+msgstr "Créé le"
+
+#: api/services/admin/exports/requests.js:21
+msgid "From"
+msgstr "Du"
+
+#: api/services/admin/exports/requests.js:22
+msgid "To"
+msgstr "Au"
+
+#: api/services/admin/exports/requests.js:23
+msgid "Consumed"
+msgstr "Consommé"
+
+#: api/services/admin/exports/requests.js:24
+msgid "Duration"
+msgstr "Durée"
+
+#: api/services/admin/exports/requests.js:25
+msgid "Status"
+msgstr "Statut"
+
+#: api/services/admin/exports/lunchs.js:15
+#: api/services/admin/exports/balance.js:56
+msgid "Quantity"
+msgstr "Quantité"
+
+#: api/services/admin/exports/balance.js:52
+msgid "Right"
+msgstr "Droit"
+
+#: api/services/admin/exports/balance.js:53
+msgid "Collection"
+msgstr "Régime"
+
+#: api/services/admin/exports/balance.js:54
+msgid "Renewal start"
+msgstr "Début du renouvellement"
+
+#: api/services/admin/exports/balance.js:55
+msgid "Renewal finish"
+msgstr "Fin du renouvellement"
+
+#: api/services/admin/exports/balance.js:57
+msgid "Consumed quantity"
+msgstr "Quantité consommée"
+
+#: api/services/admin/exports/balance.js:58
+msgid "Waiting quantity"
+msgstr "Quantité en attente"
+
+#: api/services/admin/exports/balance.js:59
+msgid "Remaining quantity"
+msgstr "Quantité restante"
+
+#: api/services/admin/exports/balance.js:60
+msgid "Pending delete"
+msgstr "Suppression en attente"
+
+#: api/services/admin/invitations/get.js:29
+msgid "This invitation does not exists"
+msgstr "Cette invitation n'existe pas"
+
+#: api/services/admin/invitations/delete.js:28
+msgid "The invitation has been deleted"
+msgstr "L'invitation à été supprimée"
+
+#: api/services/admin/invitations/save.js:57
+msgid "The invitation has been modified"
+msgstr "L'invitation à été modifiée"
+
+#: api/services/admin/invitations/save.js:85
+msgid "This email address already exists in users list"
+msgstr "Cet adresse email est déjà dans la liste des utilisateurs"
+
+#: api/services/admin/invitations/save.js:101
+#, javascript-format
+msgid "The invitation for %s has been sent"
+msgstr "L'invitation pour %s à été envoyée"
+
+#: api/services/admin/types/get.js:29
+msgid "This right type does not exists"
+msgstr "Le type de droit n'existe pas"
+
+#: api/services/admin/types/delete.js:24 api/services/admin/types/save.js:48
+msgid "This type is locked"
+msgstr "Ce type est verrouillé"
+
+#: api/services/admin/types/delete.js:32
+msgid "The right type has been deleted"
+msgstr "Le type de droit a été supprimé"
+
+#: api/services/admin/types/save.js:58
+msgid "The right type has been modified"
+msgstr "Le type de droit a été modifié"
+
+#: api/services/admin/types/save.js:77
+msgid "The right type has been created"
+msgstr "Le type de droit a été créé"
+
+#: api/services/admin/compulsoryleaves/get.js:29
+msgid "This compulsory leave does not exists"
+msgstr "Ce congé imposé n'existe pas"
+
+#: api/services/admin/compulsoryleaves/delete.js:57
+msgid "The compulsory leave has been deleted"
+msgstr "Le congé imposé a été supprimé"
+
+#: api/services/admin/compulsoryleaves/save.js:22
+#: api/services/admin/rightrenewals/save.js:18
+msgid "Finish date must be greater than start date"
+msgstr "La date de fin doit être supérieure à la date de début"
+
+#: api/services/admin/compulsoryleaves/save.js:26
+msgid "collections must be an array"
+msgstr "collections doit être de type array"
+
+#: api/services/admin/compulsoryleaves/save.js:30
+msgid "departments must be an array"
+msgstr "départements doit être de type array"
+
+#: api/services/admin/compulsoryleaves/save.js:34
+msgid "either departments or collections must contain items"
+msgstr "Les régimes ou les services doivent contenir des éléments"
+
+#: api/services/admin/compulsoryleaves/save.js:250
+#, javascript-format
+msgid "No availability on period for %s"
+msgstr "Pas de disponibilités sur la période %s"
+
+#: api/services/admin/compulsoryleaves/save.js:603
+msgid "The compulsory leave period has been modified"
+msgstr "La période du congé imposé a été modifiée"
+
+#: api/services/admin/compulsoryleaves/save.js:622
+msgid "The compulsory leave period has been created"
+msgstr "La période du congé imposé a été créée"
+
+#: api/services/admin/rightrenewals/get.js:28
+msgid "This right renewal periods does not exists"
+msgstr "La période de renouvellement du droit n'existe pas"
+
+#: api/services/admin/rightrenewals/delete.js:28
+msgid "The renewal has been deleted"
+msgstr "Le renouvellement a été supprimé"
+
+#: api/services/admin/rightrenewals/save.js:94
+msgid "The right renewal period has been modified"
+msgstr "La période de renouvellement a été modifiée"
+
+#: api/services/admin/rightrenewals/save.js:117
+msgid "The right renewal period has been created"
+msgstr "La période de renouvellement a été créée"
+
+#: api/services/admin/rights/get.js:56
+msgid "This absence right does not exists"
+msgstr "Le droit de congés n'existe pas"
+
+#: api/services/admin/rights/delete.js:34
+#, javascript-format
+msgid "Failed to delete, the right is used %d in requests"
+msgstr "Impossible de supprimer, le droit est utilisé dans %d demandes"
+
+#: api/services/admin/rights/delete.js:44
+msgid "The leave right has been deleted"
+msgstr "Le droit de congés a été supprimé"
+
+#: api/services/admin/rights/save.js:167
+msgid "The vacation right has been created"
+msgstr "Le droit de congés a été créé"
+
+#: api/services/admin/rights/save.js:169
+msgid "The vacation right has been modified"
+msgstr "Le droit de congés a été modifié"
+
+#: api/services/admin/accountcollections/get.js:28
+msgid "This collection does not exists for account"
+msgstr "Ce régime n'existe pas pour le compte"
+
+#: api/services/admin/accountcollections/delete.js:18
+msgid "this collection does not exists or is not linked to account"
+msgstr "Ce régime n'existe pas ou n'est pas lié au compte"
+
+#: api/services/admin/accountcollections/delete.js:23
+msgid "Delete a collection already started is not allowed"
+msgstr ""
+"La suppression d'un régime déjà en cours d'utilisation n'est pas permise"
+
+#: api/services/admin/accountcollections/delete.js:53
+msgid "The collection has been removed from account"
+msgstr "Le régime a été retiré du compte"
+
+#: api/services/admin/accountcollections/save.js:38
+msgid "Cant create accountCollection, missing user or account"
+msgstr ""
+"Impossible de créer accountCollection, l'utilisateur ou le compte sont "
+"manquant"
+
+#: api/services/admin/accountcollections/save.js:53
+msgid ""
+"The user has no absence account, collections are only linkable to accounts"
+msgstr ""
+"Cet utilisateur n'a pas de compte absence, les régimes peuvent seulement "
+"être liés aux comptes"
+
+#: api/services/admin/accountcollections/save.js:97
+#, javascript-format
+msgid "AccountCollection document not found for id %s"
+msgstr "le document AccountCollection n'a pas été trouvé pour l'ID %s"
+
+#: api/services/admin/accountcollections/save.js:113
+msgid "The account collection has been modified"
+msgstr "Le régime du compte a été modifié"
+
+#: api/services/admin/accountcollections/save.js:140
+msgid "The account collection has been created"
+msgstr "le régime du compte a été créé"
+
+#: api/services/user/overtimes/get.js:33
+msgid "This overtime does not exists"
+msgstr "Cette déclaration d'heures supplémentaire n'existe pas"
+
+#: api/services/user/overtimes/delete.js:17
+msgid "the overtime does not exists"
+msgstr "La déclaration d'heures supplémentaire n'existe pas"
+
+#: api/services/user/overtimes/delete.js:23
+msgid "The overtime has been deleted"
+msgstr "La déclaration d'heures supplémentaires à été supprimée"
+
+#: api/services/user/overtimes/save.js:22
+#: api/services/user/overtimes/save.js:42
+msgid "The overtime has been created"
+msgstr "La déclaration d'heures supplémentaires à été crée"
+
+#: api/services/user/overtimes/save.js:112
+msgid "The user does not exists"
+msgstr "Cet utilisateur n'existe pas"
+
+#: api/services/user/overtimes/save.js:136
+msgid "Overtime not found"
+msgstr "Déclaration d'heures supplémentaires introuvable"
+
+#: api/services/user/overtimes/save.js:139
+msgid "The overtime is settled"
+msgstr "Cette déclaration d'heures supplémentaires est soldée"
+
+#: api/services/user/consumption/get.js:18
+#: api/services/account/collection/get.js:21
+msgid "user parameter is mandatory"
+msgstr "le paramètre user est obligatoire"
+
+#: api/services/user/consumption/get.js:22
+msgid "collection parameter is mandatory"
+msgstr "le paramètre collection est obligatoire"
+
+#: api/services/user/consumption/get.js:26
+msgid "selection.begin parameter is mandatory"
+msgstr "le paramètre selection.begin est obligatoire"
+
+#: api/services/user/consumption/get.js:30
+msgid "selection.end parameter is mandatory"
+msgstr "le paramètre selection.end est obligatoire"
+
+#: api/services/user/consumption/get.js:34
+msgid "distribution parameter is mandatory"
+msgstr "le paramètre distribution est obligatoire"
+
+#: api/services/user/consumption/get.js:94
+#: api/services/account/collection/get.js:42
+msgid "Failed to load the user document"
+msgstr "Impossible de charger le document user"
+
+#: api/services/user/consumption/get.js:108
+msgid "Failed to load the collection document"
+msgstr "Impossible de charger le document du régime"
+
+#: api/services/user/requests/saveAbsence.js:44
+#, javascript-format
+msgid "Half days quantity is not allowed on right %s"
+msgstr "La consommation en demi-journée n'est pas autorisée sur le droit %s"
+
+#: api/services/user/requests/saveAbsence.js:348
+#, javascript-format
+msgid ""
+"The rule \"%s\" cannot be verified when saving absence event from %s to %s "
+"on the renewal from %s to %s from the right %s"
+msgstr ""
+"La règle \"%s\" ne peut pas être vérifiée lors de l'enregistrement de "
+"l'absence du %s au %s sur le renouvellement du %s au %s avec le droit %s"
+
+#: api/services/user/requests/saveAbsence.js:360
+msgid "Arrival date must be before renewal finish"
+msgstr "La date d'arrivée doit être avant la date de fin du renouvellement"
+
+#: api/services/user/requests/saveAbsence.js:368
+#, javascript-format
+msgid ""
+"The quantity requested on right \"%s\" is not available, available quantity "
+"is %s"
+msgstr ""
+"La quantité demandée sur le droit \"%s\" n'est pas disponible, le solde est "
+"de %s"
+
+#: api/services/user/requests/get.js:52
+#: api/services/manager/waitingrequests/get.js:54
+msgid "This request does not exists"
+msgstr "Cette demande n'existe pas"
+
+#: api/services/user/requests/get.js:56
+msgid "This request has been deleted"
+msgstr "Cette demande à été supprimée"
+
+#: api/services/user/requests/saveWorkperiodRecover.js:42
+msgid "Workperiod recover requests are disabled by administrator"
+msgstr ""
+"Les récupérations de jours travaillés sont désactivés par l'administrateur"
+
+#: api/services/user/requests/delete.js:22
+#: api/services/user/requests/save.js:25
+#: api/services/manager/waitingrequests/save.js:22
+msgid "Request modifications are not allowed in maintenance mode"
+msgstr ""
+"La modification des demandes n'est pas permise lorsque l'application est en "
+"maintenance"
+
+#: api/services/user/requests/delete.js:53
+msgid "The request has been deleted"
+msgstr "La demande a été supprimée"
+
+#: api/services/user/requests/delete.js:73
+msgid "The request is not accessible"
+msgstr "La demande n'est pas accessible"
+
+#: api/services/user/requests/delete.js:77
+msgid ""
+"This leave has been created in a compulsory leave, deletion is not allowed"
+msgstr "Ce congé est un congé imposé, la suppression n'est pas autorisée"
+
+#: api/services/user/requests/delete.js:95
+msgid "Start workflow to delete a confirmed absence"
+msgstr "Début du circuit d'approbation pour supprimer une absence confirmée"
+
+#: api/services/user/requests/save.js:42
+msgid ""
+"This leave has been created in a compulsory leave, modification is not "
+"allowed"
+msgstr "Ce congé est un congé imposé, la modification n'est pas permise"
+
+#: api/services/user/requests/save.js:383
+msgid "The request has been modified"
+msgstr "La demande a été modifiée"
+
+#: api/services/user/requests/save.js:422
+msgid "The request has been created"
+msgstr "La demande a été créée"
+
+#: api/services/user/recoverquantities/get.js:29
+msgid "This recover quantity does not exists"
+msgstr "Cette récupération n'existe pas"
+
+#: api/services/user/recoverquantities/delete.js:23
+msgid "the recover quantity does not exists"
+msgstr "La récupération n'existe pas"
+
+#: api/services/user/recoverquantities/delete.js:31
+msgid "The recover quantity has been deleted"
+msgstr "Cette récupération a été supprimée"
+
+#: api/services/user/recoverquantities/save.js:46
+msgid "The recover quantity has been modified"
+msgstr "La quantité récupérée a été modifiée"
+
+#: api/services/user/recoverquantities/save.js:59
+msgid "The recover quantity has been created"
+msgstr "La quantité récupérée a été créée"
+
+#: api/services/user/accountbeneficiaries/get.js:78
+msgid "This beneficiary does not exists for account or collection"
+msgstr "LE bénéficiaire n'existe pas pour le compte ou le régime"
+
+#: api/services/user/settings/save.js:20
+msgid "Password confirmation does not match"
+msgstr "La confirmation du mot de passe ne correspond pas"
+
+#: api/services/user/settings/save.js:112
+msgid "Your settings has been modified"
+msgstr "Vos paramètres ont été enregistrés"
+
+#: api/services/user/adjustments/save.js:54
+#, javascript-format
+msgid "Adjustment document not found for id %s"
+msgstr "le document \"Adjustment\" n'a pas été trouvé pour l'ID %s"
+
+#: api/services/user/adjustments/save.js:98
+msgid "The adjustment has been modified"
+msgstr "L'ajustement a été modifié"
+
+#: api/services/user/adjustments/save.js:99
+msgid "The quantity adjustment has been created"
+msgstr "Un ajustement de la quantité a été créé"
+
+#: api/services/user/googlecalendars/get.js:36
+#: api/services/user/googlecalendars/list.js:81
+msgid "Not connected to a google calendar"
+msgstr "Vous êtes déconnecté de l'agenda Google"
+
+#: api/services/user/googlecalendars/list.js:71
+msgid "Wrong company configuration"
+msgstr "Mauvaise configuration de la société"
+
+#: api/services/user/googlecalendars/list.js:76
+msgid "Google calendar link service is disabled"
+msgstr "Le service de liaison avec l'agenda Google est désactivé"
+
+#: api/services/user/googlecalendars/save.js:33
+msgid "A secondary calendar has been created"
+msgstr "Un agenda secondaire a été créé"
+
+#: api/services/user/googlecalendars/save.js:40
+msgid "Leave periods provided by gadael"
+msgstr "Périodes de congés fournies par Gadael"
+
+#: api/services/manager/waitingrequests/save.js:150
+msgid "The request has been confirmed"
+msgstr "La demande a été confirmée"
+
+#: api/services/manager/waitingrequests/save.js:162
+msgid "The request has been cancelled"
+msgstr "La demande a été annulée"
+
+#: api/services/manager/waitingrequests/save.js:175
+msgid "The appliquant has requested a delete, the request has been canceled"
+msgstr "Le demandeur a requis une suppression, la demande a été annulée"
+
+#: api/services/manager/waitingrequests/save.js:187
+msgid ""
+"The appliquant has requested a delete, the request has been confirmed anyway"
+msgstr ""
+"Le demandeur a requis une suppression, la demande a été supprimée malgré tout"
+
+#: api/services/manager/waitingrequests/save.js:197
+msgid ""
+"Your approval has been saved, others approvals are required to complete this "
+"step"
+msgstr ""
+"Votre acceptation a été enregistrée, d'autres approbation sont requises pour "
+"que l'étape soit terminée"
+
+#: api/services/manager/waitingrequests/save.js:204
+msgid "The request has been forwarded to the next approval step"
+msgstr ""
+"La demande a été transmise à la prochaine étape du circuit d'approbation"
+
+#: api/services/account/collection/get.js:26
+msgid "dtstart parameter is mandatory"
+msgstr "le paramètre dtstart est obligatoires"
+
+#: api/services/account/collection/get.js:31
+msgid "dtend parameter is mandatory"
+msgstr "le paramètre dtend est obligatoire"
+
+#: api/services/account/collection/get.js:51
+msgid ""
+"This period is invalid because it covers more than one collection attribution"
+msgstr ""
+"Cette période n'est pas valide car elle couvre plusieurs régimes différents"
+
+#: api/services/account/collection/get.js:55
+msgid "There is no collection defined for this period"
+msgstr "Il n'y a pas de régimes définis pour cette période"
+
+#: api/Department.api.js:202
+msgid "Products and sales"
+msgstr "Produits et ventes"
+
+#: modules/dispunits.js:20
+msgid "day"
+msgid_plural "days"
+msgstr[0] "jour"
+msgstr[1] "jours"
+
+#: modules/dispunits.js:22
+msgid "hour"
+msgid_plural "hours"
+msgstr[0] "heure"
+msgstr[1] "heures"
+
+#: modules/apputil.js:60 modules/passport.js:313
+msgid "Access denied for non administrators"
+msgstr "Accès refusé pour les utilisateurs non administrateurs"
+
+#: modules/apputil.js:65
+msgid "Access denied for users without absences account"
+msgstr "Accès refusé pour les utilisateurs sans compte absences"
+
+#: modules/apputil.js:70
+msgid "Access denied for non managers"
+msgstr "Accès refusé pour les non gestionnaires"
+
+#: modules/apputil.js:75 modules/passport.js:291
+msgid "Access denied for anonymous users"
+msgstr "Accès refusé pour les utilisateurs anonymes"
+
+#: modules/apputil.js:81
+msgid "Access denied for logged in users"
+msgstr "Accès refusé pour les utilisateurs connectés"
+
+#: modules/emails/approbalert.js:37
+#, javascript-format
+msgid "The approval status of the %s request has not been modified in %d days"
+msgstr ""
+"Le statut d'approbation de la demande de %s n'a pas été modifié depuis %d "
+"jours"
+
+#: modules/emails/approbalert.js:47
+msgid "Pending request"
+msgstr "Demande en attente"
+
+#: modules/emails/approbalert.js:49
+#, javascript-format
+msgid "%s is waiting for a response on the %s"
+msgstr "%s est en attente de réponse sur le %s"
+
+#: modules/emails/approbalert.js:54
+msgid "Please, check the request status"
+msgstr "Veuillez vérifier le statut de la demande"
+
+#: modules/emails/approbalert.js:56 modules/emails/pendingapproval.js:47
+#: modules/emails/requestaccepted.js:66 modules/emails/requestrejected.js:50
+#: modules/emails/requestcreated.js:38
+msgid "View request"
+msgstr "Voir la demande"
+
+#: modules/emails/approbalert.js:60 modules/emails/invitation.js:51
+#: modules/emails/pendingapproval.js:51 modules/emails/rolesupdated.js:36
+#: modules/emails/resetpassword.js:40 modules/emails/requestaccepted.js:75
+#: modules/emails/requestrejected.js:54 modules/emails/requestcreated.js:42
+#: modules/emails/usercreated.js:36
+msgid "Yours truly"
+msgstr "Cordialement"
+
+#: modules/emails/invitation.js:22
+#, javascript-format
+msgid "%s invited you to join the leave management application at %s"
+msgstr ""
+"%s vous a invité à rejoindre l'application de gestion des congés à l'adresse "
+"%s"
+
+#: modules/emails/invitation.js:38
+msgid "Invitation"
+msgstr "Invitation"
+
+#: modules/emails/invitation.js:40
+#, javascript-format
+msgid "%s has sent you this invitation to join %s as a user"
+msgstr ""
+"%s vous a envoyé cette invitation à rejoindre %s en tant qu'utilisateur"
+
+#: modules/emails/invitation.js:45
+msgid "Please, use the link below to create your account"
+msgstr "Veuillez utiliser le lien ci-dessous pour créer votre compte"
+
+#: modules/emails/invitation.js:47
+msgid "Setup my account"
+msgstr "Configurer mon compte"
+
+#: modules/emails/pendingapproval.js:21
+#, javascript-format
+msgid "%s: a request is waiting for your approval"
+msgstr "%s : Une demande est en attente de votre validation"
+
+#: modules/emails/pendingapproval.js:42
+msgid "Approval request"
+msgstr "Demande d'approbation"
+
+#: modules/emails/pendingapproval.js:43
+#, javascript-format
+msgid "%s request for %s is %s"
+msgstr "%s demande pour %s est %s"
+
+#: modules/emails/pendingapproval.js:45
+msgid "Please, accept of reject after login into the application"
+msgstr "Vous pouvez accepter ou rejeter une fois connecté à l'application"
+
+#: modules/emails/pendingapproval.js:58
+#, javascript-format
+msgid "Previous workflow step by %s the %s"
+msgstr "Étape précédente du workflow par %s le %s"
+
+#: modules/emails/rolesupdated.js:20
+#, javascript-format
+msgid "%s, your roles where updated"
+msgstr "%s, vos rôles ont été mis à jour"
+
+#: modules/emails/rolesupdated.js:23
+msgid "The following roles where added to your accout:"
+msgstr "Les rôles suivants ont été ajoutés sur votre compte :"
+
+#: modules/emails/rolesupdated.js:30
+msgid ""
+"You can connecto to the application to see your new roles attributions on "
+"the home page"
+msgstr ""
+"Vous pouvez vous connecter à l'application pour voir sur la page d'accueil "
+"vos nouveaux rôles attribués"
+
+#: modules/emails/rolesupdated.js:32
+msgid "View home page"
+msgstr "Voir la page d'accueil"
+
+#: modules/emails/resetpassword.js:20
+#, javascript-format
+msgid "%s: reset your password"
+msgstr "%s : réinitialiser le mot de passe"
+
+#: modules/emails/resetpassword.js:29
+msgid "Forgot your password?"
+msgstr "Mot de passe oublié?"
+
+#: modules/emails/resetpassword.js:30
+#, javascript-format
+msgid "We received a request to reset the password for your account (%s)"
+msgstr ""
+"Nous avons reçu une demande de réinitialisation du mot de passe pour le "
+"compte (%s)"
+
+#: modules/emails/resetpassword.js:33
+msgid ""
+"To reset your password, click on this link (or copy and paste the URL into "
+"your browser)"
+msgstr ""
+"Pour réinitialiser votre mot de passe, cliquez sur ce lien (ou copiez l'url "
+"dans votre navigateur)"
+
+#: modules/emails/resetpassword.js:35
+msgid "Reset your password"
+msgstr "Réinitialisez votre mot de passe"
+
+#: modules/emails/resetpassword.js:39
+msgid ""
+"If you do not have requested a password modification, just ignore this email"
+msgstr ""
+"Si vous n'avez pas demandé de modification de votre mot de passe, vous "
+"pouvez ignorer cet email"
+
+#: modules/emails/requestaccepted.js:30
+#, javascript-format
+msgid "%s: request accepted"
+msgstr "%s : demande acceptée"
+
+#: modules/emails/requestaccepted.js:31
+#, javascript-format
+msgid "Your %s has been accepted"
+msgstr "Votre %s a été acceptée"
+
+#: modules/emails/requestaccepted.js:36
+#, javascript-format
+msgid "%s: request canceled"
+msgstr "%s : demande annulée"
+
+#: modules/emails/requestaccepted.js:38
+#, javascript-format
+msgid "As requested by %s, the %s request has been canceled"
+msgstr "Comme demandé par %s, la demande %s a été annulée"
+
+#: modules/emails/requestaccepted.js:64 modules/emails/requestrejected.js:48
+msgid "Consult the request actions history after login into the application"
+msgstr ""
+"Consultez l'historique des actions sur la demande une fois connecté à "
+"l'application"
+
+#: modules/emails/requestaccepted.js:71
+#, javascript-format
+msgid "Workflow step by %s the %s"
+msgstr "Étape du workflow par %s le %s"
+
+#: modules/emails/requestrejected.js:20
+#, javascript-format
+msgid "%s: request rejected"
+msgstr "%s : demande rejetée"
+
+#: modules/emails/requestrejected.js:44
+#, javascript-format
+msgid "Your %s has been rejected"
+msgstr "Votre %s a été rejetée"
+
+#: modules/emails/requestcreated.js:23
+#, javascript-format
+msgid "%s: request created"
+msgstr "%s : demande créée"
+
+#: modules/emails/requestcreated.js:34
+#, javascript-format
+msgid "A %s has been created on your account by %s"
+msgstr "Une %s a été créé sur votre compte par %s"
+
+#: modules/emails/requestcreated.js:36
+msgid "Consult the details after login into the application"
+msgstr "Consultez les détails une fois connecté à l'application"
+
+#: modules/emails/usercreated.js:19
+#, javascript-format
+msgid "%s: new user created"
+msgstr "%s : un nouvel utilisateur a été créé"
+
+#: modules/emails/usercreated.js:27
+#, javascript-format
+msgid "A new user has been created on %s"
+msgstr "Un nouvel utilisateur a été créé sur %s"
+
+#: modules/emails/usercreated.js:29
+msgid ""
+"The new user has been created but does not have any role or absence rights, "
+"you must give the user the necessary rights to use the application normally"
+msgstr ""
+"Le nouvel utilisateur a été créé mais n'a pas de rôles ou de droits "
+"d'absence, vous devez donner les droits nécessaires à l'utilisateur pour "
+"qu'il puisse utiliser l'application normalement"
+
+#: modules/emails/usercreated.js:31
+msgid "View the new user"
+msgstr "Voir le nouvel utilisateur"
+
+#: modules/emails/usercreated.js:35
+msgid "If you do not recognize this user, you can delete it"
+msgstr "Si vous ne reconnaissez pas cet utilisateur, vous pouvez le supprimer"
+
+#: modules/attemptlogin.js:48
+msgid ""
+"Username and password combination not found or your account is inactive."
+msgstr ""
+"La combinaison du nom d'utilisateur et du mot de passe n'a pas été trouvée "
+"ou votre compte est inactif."
+
+#: modules/requestdateparams.js:29
+msgid "dtstart, dtend are mandatory parameters"
+msgstr "dtstart, dtend sont des paramètres obligatoires"
+
+#: modules/requestdateparams.js:40
+msgid "dtend must be greater than dtstart"
+msgstr "dtend doit être supérieur à dtstart"
+
+#: modules/requestdateparams.js:45
+msgid "Dates interval must be less than 2 years"
+msgstr "L'intervalle de dates doit être inférieur à 2 ans"
+
+#: modules/passport.js:44
+msgid "Unknown user"
+msgstr "Utilisateur inconnu"
+
+#: modules/passport.js:48
+msgid "No password set on user"
+msgstr "Aucun mot de passe défini sur l'utilisateur"
+
+#: modules/passport.js:57
+msgid "Invalid password"
+msgstr "Mot de passe invalide"
+
+#: modules/passport.js:79
+msgid "Creation of a new account is not allowed on this application"
+msgstr ""
+"La création d'un nouveau compte n'est pas autorisé sur cette application"
+
+#: modules/passport.js:83
+#, javascript-format
+msgid "Only email from %s are allowed"
+msgstr "Seulement les emails de %s sont autorisés"
+
+#: modules/passport.js:121
+msgid "Google API problem: Email is mandatory"
+msgstr "Problème de l'API Google : l'Email est obligatoire"
+
+#: modules/passport.js:329
+msgid "Access denied"
+msgstr "Accès refusé"
+
+#: modules/abusefilter.js:30
+msgid ""
+"You've reached the maximum number of login attempts. Please try again later."
+msgstr ""
+"Vous avez atteins le nombre maximal de tentative de connexion. Veuillez "
+"réessayer plus tard."
+
+#: rest/Common.js:46
+msgid "Logout"
+msgstr "Déconnection"
+
+#: rest/Common.js:50
+msgid "Settings"
+msgstr "Paramètres"
+
+#: rest/Common.js:60
+msgid "Calendar"
+msgstr "Agenda"
+
+#: rest/Common.js:64
+msgid "My requests"
+msgstr "Mes demandes"
+
+#: rest/Common.js:68
+msgid "My rights"
+msgstr "Mes droits"
+
+#: rest/Common.js:72
+msgid "My department"
+msgstr "Mon service"
+
+#: rest/Common.js:81
+msgid "Waiting requests"
+msgstr "Demandes en attente"
+
+#: rest/Common.js:92
+msgid "Requests"
+msgstr "Demandes"
+
+#: rest/Common.js:96
+msgid "Compulsory leaves"
+msgstr "Congés obligatoires"
+
+#: rest/Common.js:100
+msgid "Exports"
+msgstr "Exports"
+
+#: rest/Common.js:107
+msgid "Users list"
+msgstr "Liste des utilisateurs"
+
+#: rest/Common.js:111
+msgid "Invitations"
+msgstr "Invitations"
+
+#: rest/Common.js:115
+msgid "Departments list"
+msgstr "Liste des services"
+
+#: rest/Common.js:119
+msgid "Collections list"
+msgstr "Liste des régimes"
+
+#: rest/Common.js:123
+msgid "Calendars list"
+msgstr "Liste des agendas"
+
+#: rest/Common.js:130
+msgid "Right types"
+msgstr "Types de droit"
+
+#: rest/Common.js:134
+msgid "Rights configuration"
+msgstr "Configuration des droits"
+
+#: rest/Common.js:138
+msgid "Sort rights and types"
+msgstr "Ordonner les droits et les types"
+
+#: rest/Common.js:142
+msgid "Recover quantities"
+msgstr "Récupérations"
+
+#: rest/anonymous/formlogin.js:44
+msgid "You are now logged in"
+msgstr "Vous êtes maintenant connecté..."
+
+#: rest/anonymous/invitation.js:17
+msgid "Your invitation email is not valid"
+msgstr "Votre email d'invitation n'est pas valide"
+
+#: rest/anonymous/invitation.js:149
+msgid "Password is mandatory"
+msgstr "Le mot de passe est obligatoire"
+
+#: rest/anonymous/invitation.js:153
+msgid "The two password fields must be equals"
+msgstr "Les deux mots de passe saisis doivent êtres identiques"
+
+#: rest/anonymous/createfirstadmin.js:54
+msgid "The first admin already exists"
+msgstr "Le premier administrateur existe déjà"
+
+#: rest/login.js:62
+#, javascript-format
+msgid "No user found with email %s"
+msgstr "Pas d'utilisateur trouvé avec l'email %s"
+
+#: rest/login.js:81
+#, javascript-format
+msgid "An email has been sent to %s"
+msgstr "Un email a été envoyé à %s"
+
+#: rest/login.js:130
+msgid "The password confirmation does not match the new password field"
+msgstr ""
+"La confirmation du mot de passe ne correspond pas au mot de passe saisi."
+
+#: rest/login.js:157
+msgid "Invalid request. user not found"
+msgstr "Demande invalide. Utilisateur introuvable"
+
+#: rest/login.js:170
+msgid "Invalid request."
+msgstr "Demande invalide."
+
+#: rest/login.js:192
+msgid "The password has been modified"
+msgstr "Le mot de passe a été modifié"
+
+#: rest/user/user.js:15
+msgid "You must be logged in"
+msgstr "Vous devez être connecté"
+
+#: rest/user/googlecalendar.js:96
+msgid "You are disconnected from your google calendar"
+msgstr "Vous êtes déconnecté de votre agenda Google"
+
+#: schema/Right_Renewal.js:77
+msgid "The renewals periods must not overlap"
+msgstr "Les périodes de renouvellements ne doivent pas se superposer"
+
+#: schema/Right_Renewal.js:1188
+msgid ""
+"To compute the number of planned working days, the annual leave type is "
+"required"
+msgstr ""
+"Pour calculer le nombre de jours travaillés planifiés sur une année, le type "
+"congés payés annuels est requis"
+
+#: schema/Right_Renewal.js:1255
+msgid ""
+"To compute the number of planned working days on a year, the annual leave "
+"initial quantity is required"
+msgstr ""
+"Pour calculer le nombre de jours travaillés planifiés sur une année, la "
+"quantité de congés payés annuels est requise"
+
+#: schema/Right_Renewal.js:1298
+#, javascript-format
+msgid ""
+"Invalid renewal, the renewal is too short and does not contain the requested "
+"date: %s"
+msgstr ""
+"Renouvellement non valide, le renouvellement est trop court et ne contient "
+"pas la date de la demande : %s"
+
+#: schema/Request.js:351
+msgid "Leave"
+msgstr "Congé"
+
+#: schema/Request.js:355
+msgid "Time saving deposit"
+msgstr "Dépôt d'épargne Temps"
+
+#: schema/Request.js:359
+msgid "Overtime declaration"
+msgstr "Déclaration d'heures supplémentaires"
+
+#: schema/Request.js:362
+msgid "Unknown"
+msgstr "Inconnu"
+
+#: schema/Request.js:377
+msgid "Waiting approval"
+msgstr "En attente d'approbation"
+
+#: schema/Request.js:379 schema/ApprovalStep.js:73
+msgid "Accepted"
+msgstr "Accepté"
+
+#: schema/Request.js:381 schema/ApprovalStep.js:74
+msgid "Rejected"
+msgstr "Refusée"
+
+#: schema/Request.js:389
+msgid "Waiting deletion approval"
+msgstr "En attente de l'approbation de la suppression"
+
+#: schema/Request.js:391
+msgid "Deleted"
+msgstr "Supprimé"
+
+#: schema/Request.js:393
+msgid "Deletion rejected"
+msgstr "Suppression rejectée"
+
+#: schema/Request.js:397
+msgid "Undefined"
+msgstr "Non défini"
+
+#: schema/User.js:134
+#, javascript-format
+msgid "The total number of active users cannot exceed %d"
+msgstr "Le nombre total d'utilisateurs actif ne peut excéder %d"
+
+#: schema/Type.js:52 schema/data/fr.js:12 schema/data/ch.js:10
+#: schema/data/default.js:12 schema/data/be.js:12 schema/data/uk.js:12
+msgid "Paid annual leave"
+msgstr "Congé payé annuel"
+
+#: schema/Type.js:53
+msgid "Seniority leave"
+msgstr "Absence pour anciennetée"
+
+#: schema/Type.js:54
+msgid "Recovery"
+msgstr "Récupération"
+
+#: schema/Type.js:55
+msgid "sickness absence"
+msgstr "Arrêt maladie"
+
+#: schema/Type.js:56
+msgid "Work accident"
+msgstr "Accident du travail"
+
+#: schema/Type.js:57
+msgid "Parental leave"
+msgstr "Congé parental"
+
+#: schema/Type.js:58 schema/data/fr.js:63 schema/data/ch.js:57
+#: schema/data/default.js:31 schema/data/be.js:37
+msgid "Maternity"
+msgstr "Maternité"
+
+#: schema/Type.js:59
+msgid "Paternity"
+msgstr "Paternité"
+
+#: schema/Type.js:60
+msgid "Sick child"
+msgstr "Enfant malade"
+
+#: schema/Type.js:61
+msgid "Wedding"
+msgstr "Mariage"
+
+#: schema/Type.js:62
+msgid "Birth"
+msgstr "Naissance"
+
+#: schema/Type.js:63
+msgid "Decease"
+msgstr "Décès"
+
+#: schema/Type.js:64
+msgid "Training"
+msgstr "Formation"
+
+#: schema/Type.js:65
+msgid "Relocation"
+msgstr "Déménagement"
+
+#: schema/Type.js:66 schema/data/fr.js:93 schema/data/us.js:24
+#: schema/data/default.js:61
+msgid "Unpaid leave"
+msgstr "Congés sans solde"
+
+#: schema/Type.js:67
+msgid "Strike"
+msgstr "Grève"
+
+#: schema/Type.js:68
+msgid "Leave for results"
+msgstr "Absence pour résultat"
+
+#: schema/Type.js:69
+msgid "Union representation"
+msgstr "Représentation syndicale"
+
+#: schema/Type.js:70
+msgid "Absence as an elected official"
+msgstr "Absence en tant qu'élu"
+
+#: schema/Type.js:71
+msgid "Reservist leave"
+msgstr "Absence réserviste"
+
+#: schema/Type.js:72
+msgid "Presence in court"
+msgstr "Présence au tribunal"
+
+#: schema/Type.js:77
+msgid "Time savings account"
+msgstr "Compte Épargne Temps"
+
+#: schema/Type.js:78
+msgid "Fractionating leave"
+msgstr "Congés de fractionnement"
+
+#: schema/Type.js:127
+#, javascript-format
+msgid "No rights found in type \"%s\""
+msgstr "Pas de droits trouvés pour le type \"%s\""
+
+#: schema/RightCollection.js:193
+msgid "General regime 100%"
+msgstr "Régime générale 100%"
+
+#: schema/RightCollection.js:194
+msgid "Part-time 90%"
+msgstr "Temps-partiel 90%"
+
+#: schema/RightCollection.js:195
+msgid "Part-time 80%"
+msgstr "Temps-partiel 80%"
+
+#: schema/RightCollection.js:196
+msgid "Part-time 70%"
+msgstr "Temps-partiel 70%"
+
+#: schema/RightCollection.js:197
+msgid "Part-time 50%"
+msgstr "Temps-partiel 50%"
+
+#: schema/RequestLog.js:40
+msgid "Create request"
+msgstr "Créer la demande"
+
+#: schema/RequestLog.js:42
+msgid "Send request to approval"
+msgstr "Envoyer la demande en approbation"
+
+#: schema/RequestLog.js:44
+msgid "Approval step accepted"
+msgstr "Étape de l'approbation acceptée"
+
+#: schema/RequestLog.js:46
+msgid "Approval step rejected"
+msgstr "Étape de l'approbation rejetée"
+
+#: schema/RequestLog.js:48
+msgid "Approval workflow end"
+msgstr "Fin du workflow d'approbation"
+
+#: schema/RequestLog.js:50
+msgid "Modify request"
+msgstr "Modifier la demande"
+
+#: schema/RequestLog.js:52
+msgid "Delete request"
+msgstr "Supprimer la demande"
+
+#: schema/RequestLog.js:55
+msgid "Unknown action"
+msgstr "Action inconnue"
+
+#: schema/data/fr.js:18 schema/data/fr.js:44 schema/data/be.js:18
+#: schema/data/uk.js:18
+msgid ""
+"The creation of the request can be made in the period of renewal, with 30 "
+"days of tolerance"
+msgstr ""
+"La création de la demande peut être faite dans la période du renouvellement, "
+"avec une tolérance de 30 jours"
+
+#: schema/data/fr.js:24 schema/data/fr.js:50 schema/data/default.js:18
+#: schema/data/be.js:24 schema/data/uk.js:24
+msgid "The absence must be within the renewal period"
+msgstr "La demande doit être comprise dans la période du renouvellement"
+
+#: schema/data/fr.js:79 schema/data/ch.js:72 schema/data/us.js:10
+#: schema/data/default.js:47 schema/data/be.js:52 schema/data/uk.js:67
+msgid "Sickness absence"
+msgstr "Arrêt maladie"
+
+#: schema/data/ch.js:16 schema/data/ch.js:36
+msgid ""
+"The absence must be made after the renewal start date, and within 5 years "
+"following the end of the renewal period"
+msgstr ""
+"L'absence doit être créée après la date de début du renouvellement, et dans "
+"les 5 qui suivent la fin de la période de renouvellement"
+
+#: schema/data/ch.js:30
+msgid "Paid annual leave until the age of 20 years old"
+msgstr "Congé payé annuel jusqu'à l'âge de 20 ans"
+
+#: schema/data/ch.js:43
+msgid "Under 21 at the time of the absence"
+msgstr "Moins de 21 ans lors de l'absence"
+
+#: schema/data/uk.js:37
+msgid "Ordinary Maternity Leave"
+msgstr "Congé Maternité ordinaire"
+
+#: schema/data/uk.js:52
+msgid "Additional Maternity Leave"
+msgstr "Congé Maternité supplémentaire"
+
+#: schema/Right_Rule.js:104
+msgid "Interval values must be numbers of years"
+msgstr "Les valeurs de l'intervalle doivent êtres un nombre d'année"
+
+#: schema/Right_Rule.js:109
+msgid "Interval values must be set in a correct order"
+msgstr "Les valeurs de l'intervalle doivent êtres définies dans l'ordre"
+
+#: schema/User_Account.js:1062
+#, javascript-format
+msgid "No weeks found for %s"
+msgstr "Pas de semaine trouvée pour %s"
+
+#: schema/Department.js:109
+#, javascript-format
+msgid ""
+"A leave over this period is not possible because %d people must be available "
+"in the \"%s\" department"
+msgstr ""
+"une absence sur cette période n'est pas possible car %d personnes doivent "
+"êtres disponibles dans le service \"%s\""
+
+#: schema/ApprovalStep.js:72
+msgid "Waiting"
+msgstr "En attente"
+
+#: schema/RecoverQuantity.js:30
+msgid "Half-day"
+msgstr "Demie-journée"
+
+#: schema/RecoverQuantity.js:36
+msgid "A day"
+msgstr "Un jour"
+
+#: schema/RecoverQuantity.js:42
+msgid "One hour"
+msgstr "Une heure"
+
+#: schema/RecoverQuantity.js:48
+msgid "A week-end"
+msgstr "Un week-end"
+
+#: schema/Calendar.js:232
+msgid "5 days 40H - 8H 12H / 14H 18H"
+msgstr "5 jours 40H - 8H 12H / 14H 18H"
+
+#: schema/Calendar.js:240
+msgid "5 days 39H - 8H 12H / 14H 18H, 17H on friday"
+msgstr "5 jours 39H - 8H 12H / 14H 18H, 17H le vendredi"
+
+#: schema/Calendar.js:248
+msgid "5 days 35H - 8H 12H / 14H 17H"
+msgstr "5 jours 35H - 8H 12H / 14H 17H"
+
+#: schema/Calendar.js:256
+msgid "5 days 36H - 8H 12H / 14H 18H, no friday afternoon"
+msgstr "5 jours 36H - 8H 12H / 14H 18H, pas de vendredi après-midi"
+
+#: schema/Calendar.js:264
+msgid "5 days 36H - 8H 12H / 14H 18H, no wednesday afternoon"
+msgstr "5 jours 36H - 8H 12H / 14H 18H, pas de mercredi après-midi"
+
+#: schema/Calendar.js:272
+msgid "5 days 20H - 14H 18H"
+msgstr "5 jours 20H - 14H 18H"
+
+#: schema/Calendar.js:280
+msgid "5 days 20H - 8H 12H"
+msgstr "5 jours 20H - 8H 12H"
+
+#: schema/Calendar.js:288
+msgid "4 days 32H - 8H 12H / 14H 18H, no friday"
+msgstr "4 jours 32H - 8H 12H / 14H 18H, pas de vendredi"
+
+#: schema/Calendar.js:296
+msgid "4 days 32H - 8H 12H / 14H 18H, no wednesday"
+msgstr "4 jours 32H - 8H 12H / 14H 18H, pas de mercredi"
+
+#: schema/Calendar.js:304
+msgid "5 days 50H - 9H30 13H / 14H 19H, saturday 18H"
+msgstr "5 jours 50H - 9H30 13H / 14H 19H, samedi 18H"
+
+#: schema/Calendar.js:320
+msgid "Guadeloupe non working days"
+msgstr "Jours fériés en Guadeloupe"
+
+#: schema/Calendar.js:326
+msgid "Guyane non working days"
+msgstr "Jours fériés en Guyane"
+
+#: schema/Calendar.js:332
+msgid "Martinique non working days"
+msgstr "Jours fériés en Martinique"
+
+#: schema/Calendar.js:338
+msgid "Moselle, Bas-Rhin, Haut-Rhin non working days"
+msgstr "Jours fériés pour la Moselle, Bas-Rhin, Haut-Rhin"
+
+#: schema/Calendar.js:345
+msgid "French non working days (metropolis)"
+msgstr "Jours fériés en France métropolitaine"
+
+#: schema/Calendar.js:351
+msgid "French polynesia non working days"
+msgstr "Jours fériés en Polynésie Française"
+
+#: schema/Calendar.js:357
+msgid "Reunion island non working days"
+msgstr "Jours fériés sur l'Île de la Réunion"
+
+#: schema/Calendar.js:363
+msgid "Wallis and Futuna non working days"
+msgstr "Jours fériés de Wallis et Futuna"
+
+#: schema/Calendar.js:370
+msgid "School vacation"
+msgstr "Vacances scolaires"
+
+#: schema/Calendar.js:385
+msgid "Belgium non working days"
+msgstr "Jours fériés en Belgique"
+
+#: schema/Calendar.js:397
+msgid "Ireland non working days"
+msgstr "Jours fériés en Irlande"
+
+#: schema/Calendar.js:438 schema/Calendar.js:538
+#, javascript-format
+msgid "%s non working days"
+msgstr "%s jours fériés"
+
+#: schema/Calendar.js:456
+msgid "England and Wales legal holidays"
+msgstr "Jours fériés en Angleterre et Pays de Galles"
+
+#: schema/Calendar.js:462
+msgid "North Ireland legal holidays"
+msgstr "Jours fériés en Irlande du Nord"
+
+#: schema/Calendar.js:468
+msgid "Scotland legal holidays"
+msgstr "Jours fériés en Écosse"
+
+#~ msgid "Workperiod recover"
+#~ msgstr "Récupération de jour travaillé"
+
+#~ msgid "At least one event is required"
+#~ msgstr "Au moins un événement est requis"
+
+#~ msgid "Annual leaves"
+#~ msgstr "Congé payés"
+
+#~ msgid "days"
+#~ msgstr "jours"
+
+#~ msgid "Week-ends"
+#~ msgstr "Week-ends"
+
+#~ msgid "Non working days"
+#~ msgstr "Jours fériés"
+
+#~ msgid "Admin summary"
+#~ msgstr "Sommaire de l'administrateur"
+
+#~ msgid ""
+#~ "Forgot your password?\n"
+#~ "---------------------\n"
+#~ "\n"
+#~ "We received a request to reset the password for your account (%s).\n"
+#~ "\n"
+#~ "To reset your password, click on this [link][1] (or copy and paste the "
+#~ "URL into your browser):\n"
+#~ "\n"
+#~ "[1]: %s\n"
+#~ "\n"
+#~ "Thanks,\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Mot de passe oublié?\n"
+#~ "---------------------\n"
+#~ "\n"
+#~ "Nous avons reçu une demande de réinitialisation de mot de passe pour "
+#~ "votre compte (%s).\n"
+#~ "\n"
+#~ "Pour réinitialiser votre mot de passe, veuillez cliquer sur ce [lien][1] "
+#~ "(ou copier coller l'url dans votre navigateur):\n"
+#~ "\n"
+#~ "[1]: %s\n"
+#~ "\n"
+#~ "Merci,\n"
+#~ "%s"
+
+#~ msgid "Day"
+#~ msgid_plural "Days"
+#~ msgstr[0] "Jour"
+#~ msgstr[1] "Jours"
+
+#~ msgid "Hour"
+#~ msgid_plural "Hours"
+#~ msgstr[0] "Heure"
+#~ msgstr[1] "Heures"
+
+#~ msgid ""
+#~ "Forgot your password?\n"
+#~ "---------------------\n"
+#~ "\n"
+#~ "We received a request to reset the password for your account (%s).\n"
+#~ "\n"
+#~ "To reset your password, click on the link below (or copy and paste the "
+#~ "URL into your browser):\n"
+#~ "\n"
+#~ "[%s]\n"
+#~ "\n"
+#~ "Thanks,\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Mot de passe oublié?\n"
+#~ "---------------------\n"
+#~ "\n"
+#~ "Nous avons reçu une demande de réinitialisation du mot de passe pour "
+#~ "votre compte (%s).\n"
+#~ "\n"
+#~ "Pour réinitialiser votre mot de passe, cliquez le lien ci-dessous (ou "
+#~ "copié-coller le lien dans votre navigateur):\n"
+#~ "\n"
+#~ "[%s]\n"
+#~ "\n"
+#~ "Merci,\n"
+#~ "%s"

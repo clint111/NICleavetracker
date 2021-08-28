@@ -1,0 +1,105 @@
+
+<div class="row">
+
+
+    <div class="col-xs-8">
+        <h2><i class="fa fa-folder text-muted"></i> {{compulsoryleave.name}}</h2>
+
+    </div>
+
+    <div class="col-xs-4 text-right">
+        <br />
+        <a ng-href="#/admin/compulsoryleave-edit/{{compulsoryleave._id}}" class="btn btn-info hidden-print" role="button"><i class="fa fa-edit"></i> <span class="hidden-xs" translate>Edit</span></a>
+        &nbsp; <a ng-click="delete()" class="btn btn-danger hidden-print" role="button"><i class="fa fa-times"></i> <span class="hidden-xs" translate>Delete</span></a>
+    </div>
+
+</div>
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <p ng-repeat="paragraph in compulsoryleave.description|nlToArray track by $index">{{paragraph}}</p>
+    </div>
+
+    <div class="col-sm-6">
+        <dl>
+            <dt translate>From:</dt><dd>{{compulsoryleave.dtstart|date:'medium'}}</dd>
+            <dt translate>To:</dt><dd>{{compulsoryleave.dtend|date:'medium'}}</dd>
+            <dt translate>Right:</dt>
+            <dd>
+                <i class="fa fa-asterisk" style="color:{{compulsoryleave.right.type.color}}" title="{{compulsoryleave.right.type.name}}"></i>
+                <a href="#/admin/rights/{{compulsoryleave.right._id}}">{{compulsoryleave.right.name}}</a>
+            </dd>
+        </dl>
+
+    </div>
+
+    <div class="col-sm-6">
+        <dl>
+
+            <dt translate>Valid users:</dt><dd>{{validUsers}}/{{compRequest.length}}</dd>
+        </dl>
+
+        <p>
+            <button ng-disabled="!quantitiesLoaded||0===validUsers" class="btn btn-primary btn-xs" ng-click="savePeriods()" translate>Book available periods</button><br />
+            <em translate>Create a leave on all valid users</em>
+        </p>
+        <p>
+            <button class="btn btn-danger btn-xs" ng-click="removePeriods()" translate>Remove booked periods</button><br />
+            <em translate>Remove the leave on all users with a booked period</em>
+        </p>
+    </div>
+</div>
+
+<div class="gadael-list-rows top30">
+
+    <div class="row" ng-repeat="compulsoryLeaveRequest in compRequest">
+
+        <div class="col-sm-4">
+            <img ng-src="{{compulsoryLeaveRequest.user.imageUrl}}" height="35" class="img-rounded" />
+            <a ng-href="#/admin/users/{{compulsoryLeaveRequest.user.id}}">{{compulsoryLeaveRequest.user.name}}</a>
+        </div>
+
+        <div class="col-sm-4">
+            <dl ng-if="!compulsoryLeaveRequest.request">
+                <dt translate>Available on period</dt>
+                <dd>
+                    {{compulsoryLeaveRequest.quantity|number}}
+                    <span ng-switch="compulsoryleave.right.quantity_unit">
+                        <span ng-switch-when="D"><span translate translate-n="compulsoryLeaveRequest.quantity" translate-plural="days">day</span></span>
+                        <span ng-switch-when="H"><span translate translate-n="compulsoryLeaveRequest.quantity" translate-plural="hours">hour</span></span>
+                    </span>
+                </dd>
+            </dl>
+            <dl>
+                <dt translate>Available on right</dt>
+                <dd>
+                    {{compulsoryLeaveRequest.right_quantity|number}}
+                    <span ng-switch="compulsoryleave.right.quantity_unit">
+                        <span ng-switch-when="D"><span translate translate-n="compulsoryLeaveRequest.right_quantity" translate-plural="days">day</span></span>
+                        <span ng-switch-when="H"><span translate translate-n="compulsoryLeaveRequest.right_quantity" translate-plural="hours">hour</span></span>
+                    </span>
+                </dd>
+            </dl>
+
+        </div>
+
+
+        <div class="col-sm-4">
+            <span ng-if="compulsoryLeaveRequest.request">
+                <i class="fa fa-calendar-check-o text-success"></i>
+                <a href="#/admin/requests/absences/{{compulsoryLeaveRequest.request}}">
+                    <span translate>Period is booked</span>
+                    <span class="badge">{{compulsoryLeaveRequest.quantity}} {{compulsoryLeaveRequest.disp_unit}}</span>
+                </a>
+            </span>
+            <span ng-if="!compulsoryLeaveRequest.request">
+                <span ng-if="!compulsoryLeaveRequest.capped && compulsoryLeaveRequest.quantity">
+                    <i class="fa fa-calendar-plus-o"></i> <span translate>Available for booking</span>
+                </span>
+            </span>
+        </div>
+    </div>
+
+</div>

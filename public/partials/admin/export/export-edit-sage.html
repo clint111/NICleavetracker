@@ -1,0 +1,28 @@
+<h1><i class="fa fa-cloud-download text-muted"></i> <span translate>Export for Sage</span></h1>
+
+<form role="form">
+
+    <ng-include class="col-md-4" src="'partials/utils/common/exports/export-edit.html'"></ng-include>
+
+    <div class="col-md-8 top15">
+        <strong translate>Get only periods from the following types:</strong>
+        <div ng-repeat="type in types" class="checkbox">
+            <label><input type="checkbox" value="{{type._id}}" ng-model="type.checked" /> {{type.name}}</label>
+        </div>
+    </div>
+
+    <div class="row text-info" role="alert">
+        <div class="col-xs-1 top15 text-right">
+            <i class="fa fa-info-circle fa-2x vcenter"></i>
+        </div>
+        <div class="col-xs-11 top15">
+            <span class="vcenter" translate>The leave periods overlapping the extracting period will be modified to fit in the extracting period, the reported number of days will adjusted accordingly</span>
+        </div>
+    </div>
+
+    <div class="col-md-12 top30">
+        <button class="btn btn-primary" ng-click="download()"><i class="fa fa-download"></i> <span translate>Download</span></button>
+        <a id="downloadLink" href="{{downloadUrl}}"></a>
+        <button class="btn btn-link" ng-click="cancel()" translate>Cancel</button>
+    </div>
+</form>

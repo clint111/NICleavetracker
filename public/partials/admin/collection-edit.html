@@ -1,0 +1,123 @@
+<h1 ng-if="undefined === collection._id"><i class="fa fa-edit text-muted"></i> <span translate>Create a right collection</span></h1>
+<h1 ng-if="undefined !== collection._id"><i class="fa fa-edit text-muted"></i> <span translate>Modify a right collection</span></h1>
+
+
+<form role="form" class="top30">
+    <div class="form-group">
+        <label for="right_collection_name" translate>Collection name</label>
+        <input type="text" class="form-control" id="right_collection_name" ng-model="collection.name" />
+    </div>
+
+    <div class="form-group">
+        <label for="right_collection_attendance" translate>Attendance (percentage relative to full-time)</label>
+        <div class="input-group">
+            <input type="text" class="form-control" id="right_collection_attendance" ng-model="collection.attendance" />
+            <div class="input-group-addon">%</div>
+        </div>
+    </div>
+
+
+    <div class="top30">
+        <h4 translate>Business days for the users associated to this collection</h4>
+        <div class="form-inline">
+            <div class="checkbox left10">
+                <label><input type="checkbox" value="1" ng-model="collection.businessDays.SU" /> <span translate>Sunday</span></label>
+            </div>
+            <div class="checkbox left10">
+                <label><input type="checkbox" value="1" ng-model="collection.businessDays.MO" /> <span translate>Monday</span></label>
+            </div>
+            <div class="checkbox left10">
+                <label><input type="checkbox" value="1" ng-model="collection.businessDays.TU" /> <span translate>Tuesday</span></label>
+            </div>
+            <div class="checkbox left10">
+                <label><input type="checkbox" value="1" ng-model="collection.businessDays.WE" /> <span translate>Wednesday</span></label>
+            </div>
+            <div class="checkbox left10">
+                <label><input type="checkbox" value="1" ng-model="collection.businessDays.TH" /> <span translate>Thursday</span></label>
+            </div>
+            <div class="checkbox left10">
+                <label><input type="checkbox" value="1" ng-model="collection.businessDays.FR" /> <span translate>Friday</span></label>
+            </div>
+            <div class="checkbox left10">
+                <label><input type="checkbox" value="1" ng-model="collection.businessDays.SA" /> <span translate>Saturday</span></label>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group top30">
+        <label for="right_collection_workedDays" translate>Package agreement worked days</label>
+        <div class="input-group">
+            <input type="text" class="form-control" id="right_collection_workedDays" ng-model="collection.workedDays" />
+            <div class="input-group-addon" translate>Days</div>
+        </div>
+    </div>
+
+
+    <div class="form-group top30">
+        <label>
+            <input type="checkbox" ng-model="collection.useWorkschedule" />
+            <span translate>Use the user workschedule calendar to compute worked days</span>
+        </label>
+
+    </div>
+    <div class="top15" ng-if="!collection.useWorkschedule">
+        <h4 translate>Worked days in a week (RTT calculation)</h4>
+        <div class="form-inline">
+            <div class="checkbox left10">
+                <label><input type="checkbox" value="1" ng-model="collection.customScheduleDays.SU" /> <span translate>Sunday</span></label>
+            </div>
+            <div class="checkbox left10">
+                <label><input type="checkbox" value="1" ng-model="collection.customScheduleDays.MO" /> <span translate>Monday</span></label>
+            </div>
+            <div class="checkbox left10">
+                <label><input type="checkbox" value="1" ng-model="collection.customScheduleDays.TU" /> <span translate>Tuesday</span></label>
+            </div>
+            <div class="checkbox left10">
+                <label><input type="checkbox" value="1" ng-model="collection.customScheduleDays.WE" /> <span translate>Wednesday</span></label>
+            </div>
+            <div class="checkbox left10">
+                <label><input type="checkbox" value="1" ng-model="collection.customScheduleDays.TH" /> <span translate>Thursday</span></label>
+            </div>
+            <div class="checkbox left10">
+                <label><input type="checkbox" value="1" ng-model="collection.customScheduleDays.FR" /> <span translate>Friday</span></label>
+            </div>
+            <div class="checkbox left10">
+                <label><input type="checkbox" value="1" ng-model="collection.customScheduleDays.SA" /> <span translate>Saturday</span></label>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row top30">
+
+        <h3 class="col-md-9" translate>Vacation rights in collection</h3>
+
+        <div class="col-md-3 text-right">
+            <br />
+            <button class="btn btn-primary" ng-click="addRight()">
+                <i class="fa fa-plus-circle"></i> <span translate>Add vacation right</span>
+            </button>
+        </div>
+    </div>
+
+
+    <div class="form-group" ng-repeat="collectionRight in collectionRights">
+
+        <label for="right{{$index}}" translate>Vacation right</label>
+
+        <div class="input-group">
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-warning" ng-click="removeRight($index)"><span class="glyphicon glyphicon-remove"></span><span class="sr-only" translate>Remove</span></button>
+            </div>
+            <select class="form-control" id="right{{$index}}" ng-model="collectionRight.right._id" ng-options="right._id as right.name for right in rights" ng-required>
+                <option></option>
+            </select>
+        </div>
+    </div>
+
+    <br />
+
+    <button class="btn btn-primary" ng-click="saveCollection()" translate>Save</button>
+    <button class="btn btn-link" ng-click="back()" translate>Cancel</button>
+</form>

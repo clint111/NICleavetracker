@@ -1,0 +1,71 @@
+
+<div class="row">
+
+
+    <div class="col-xs-10">
+        <h2><i class="fa fa-building-o text-muted"></i> {{department.name}}</h2>
+
+    </div>
+
+    <div class="col-xs-2 text-right">
+        <br />
+        <a ng-href="#/admin/department-edit/{{department._id}}" class="btn btn-info hidden-print" role="button"><i class="fa fa-edit"></i> <span class="hidden-xs" translate>Edit</span></a>
+    </div>
+
+</div>
+
+
+
+
+
+<div class="top30" ng-if="department.managers.length > 0">
+
+    <div class="row top30" ng-repeat="appdep in approval" ng-init="step=$index + 1">
+
+        <div ng-repeat="user in appdep.managers" class="col-md-6 col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-xs-3">
+                        <img ng-src="{{user.imageUrl}}" style="max-width:100%" />
+                    </div>
+                    <div class="col-xs-7">
+                        <h4><span translate>Step {{step}} approver</span></h4>
+                        <p>
+                            <strong>{{user.lastname}} {{user.firstname}}</strong><br />
+                            <small><span translate>Managed department:</span> {{appdep.name}}</small>
+                        </p>
+                    </div>
+                    <div class="col-xs-2 text-right">
+                        <a class="btn btn-primary btn-xs hidden-print" ng-href="#/admin/users/{{user._id}}" role="button"><i class="fa fa-plus-circle"></i> <span class="hidden-xs" translate>View</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="gadael-department" ng-repeat="department in allDepartments">
+    <div ng-include="'partials/utils/common/department/nextweek.html'"></div>
+</div>
+
+
+
+<div class="row" ng-if="department.children.length > 0">
+
+    <h3><i class="fa fa-building-o text-muted"></i> <span translate>Sub-departments</span></h3>
+
+    <script type="text/ng-template"  id="tree_item_renderer.html">
+        <a href="#/admin/departments/{{subdep._id}}">{{subdep.name}}</a>
+        <ul>
+            <li ng-repeat="subdep in subdep.children" ng-include="'tree_item_renderer.html'"></li>
+        </ul>
+    </script>
+
+
+    <ul>
+        <li ng-repeat="subdep in department.children" ng-include="'tree_item_renderer.html'"></li>
+    </ul>
+</div>

@@ -1,0 +1,91 @@
+<div class="row panel panel-primary">
+
+    <h2 class="col-sm-12"><i class="fa fa-asterisk" style="color:{{beneficiary.right.type.color}}" title="{{beneficiary.right.type.name}}"></i> {{beneficiary.right.name}}</h2>
+    <div class="col-sm-12"><p class="lead">{{beneficiary.right.description}}</p></div>
+    <div class="col-sm-6">
+        <p>
+            <span translate>Type:</span> {{beneficiary.right.type.name}}
+        </p>
+        <p>
+            <span translate>Default quantity on start renewal:</span> {{beneficiary.right.quantity | rightQuantity}} {{beneficiary.right.quantity_dispUnit}}
+        </p>
+        <p ng-if="beneficiary.right.defaultAbsenceLength > 0">
+            <span translate>Legal absence length:</span> {{beneficiary.right.defaultAbsenceLength|rightQuantity}} {{beneficiary.right.quantity_dispUnit}}
+        </p>
+        <p ng-if="beneficiary.right.addMonthly.quantity">
+            <span translate>Monthly additions:</span> {{beneficiary.right.addMonthly.quantity | number:1}} {{beneficiary.right.quantity_dispUnit}}
+        </p>
+    </div>
+
+    <div class="col-sm-6">
+        <p ng-if="beneficiary.right.require_approval"><i class="fa fa-lock text-danger"></i> <span translate>Require approval</span></p>
+        <p ng-if="!beneficiary.right.require_approval"><i class="fa fa-unlock-alt text-success"></i> <span translate>Do not require approval</span></p>
+
+
+        <ol>
+            <li ng-repeat="rule in beneficiary.right.rules">{{rule.title}}</li>
+        </ol>
+    </div>
+</div>
+
+
+<div ng-if="beneficiary.available_quantity !== null" class="hidden-md hidden-sm hidden-xs">
+    <nvd3-line-chart
+        data="timedAvailableQuantity"
+        width="850"
+        height="200"
+        showXAxis="true"
+        showYAxis="true"
+        isArea="false"
+        xAxisTickFormat="xAxisTickFormat_Date_Format()"
+        interpolate="step-after"
+         interactive="true"
+         useInteractiveGuideLine="true"
+         tooltips="true"
+        >
+            <svg></svg>
+    </nvd3-line-chart>
+</div>
+
+<div ng-include="'partials/utils/common/renewal/errors.html'"></div>
+
+
+<div ng-model="activePanel" class="panel-group row panel panel-{{renewal.paneltype}}" ng-repeat="renewal in beneficiary.renewals" role="tablist" aria-multiselectable="true" bs-collapse>
+
+    <div class="panel-heading pointer" role="tab" bs-collapse-toggle>
+        <i class="fa fa-retweet"></i> &nbsp; <span translate>From</span> <strong>{{renewal.start|date}}</strong> <span translate>to</span> <strong>{{renewal.finish|date}}</strong>
+    </div>
+
+    <div class="panel-collapse" role="tabpanel" bs-collapse-target>
+        <div class="panel-body">
+            <dl class="col-md-4">
+                <dt translate>Initial quantity:</dt>
+                <dd>{{renewal.initial_quantity | rightQuantity}} {{renewal.initial_quantity_dispUnit}}</dd>
+            </dl>
+
+            <dl class="col-md-4">
+                <dt translate>Consumed:</dt>
+                <dd>{{renewal.consumed_quantity | rightQuantity}} {{renewal.consumed_quantity_dispUnit}}</dd>
+            </dl>
+
+            <dl class="col-md-4">
+                <dt translate>Available:</dt>
+                <dd>{{renewal.available_quantity | rightQuantity}} {{renewal.available_quantity_dispUnit}}</dd>
+            </dl>
+
+            <dl class="col-md-4">
+                <dt translate>Waiting approval:</dt>
+                <dd class="text-success">{{renewal.waiting_quantity.created | rightQuantity}} {{renewal.waiting_quantity.created_dispUnit}}</dd>
+            </dl>
+
+            <dl class="col-md-4">
+                <dt translate>Waiting delete approval:</dt>
+                <dd class="text-danger">{{renewal.waiting_quantity.deleted | rightQuantity}} {{renewal.waiting_quantity.deleted_dispUnit}}</dd>
+            </dl>
+        </div>
+
+        <div ng-include="'partials/utils/common/renewal/combined-adjutments.html'"></div>
+
+    </div>
+
+</div>

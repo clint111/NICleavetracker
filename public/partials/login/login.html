@@ -1,0 +1,53 @@
+<div class="row">
+	<div class="page-header">
+		<h1 translate>Sign In</h1>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-6">
+
+		<div id="login" ng-if="company.login.form">
+			<form ng-submit="submit()" ng-controller="Login" >
+				<div class="form-group ">
+					<label class="control-label" translate>Your email:</label>
+					<input type="text" class="form-control" value="" name="username" ng-model="username" auto-fill-sync />
+					<span class="help-block"></span>
+				</div>
+				<div class="form-group ">
+					<label class="control-label" translate>Password:</label>
+					<input type="password" class="form-control" value="" name="password" ng-model="password" auto-fill-sync />
+					<span class="help-block"></span>
+				</div>
+				<div class="form-actions">
+					<button class="btn btn-primary btn-login" type="submit" translate>Sign In</button>
+					&nbsp;<a class="btn btn-link" href="#/login/forgot/" translate>Forget your password?</a>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="col-sm-1"></div>
+
+	<div class="col-sm-5">
+		<br />
+
+		<div class="panel panel-default" ng-if="company.login.google">
+			<div class="panel-body text-center">
+				<h4 translate>Authenticate using your google account</h4>
+				<br />
+				<br />
+				<a class="btn btn-primary" href="/login/google" translate>Google login</a>
+			</div>
+		</div>
+
+        <div class="panel panel-default" ng-if="company.login.cas">
+			<div class="panel-body text-center">
+				<h4 translate>Authenticate using CAS</h4>
+				<br />
+				<br />
+				<a class="btn btn-primary" href="/login/cas" translate>CAS login</a>
+			</div>
+		</div>
+	</div>
+</div>
